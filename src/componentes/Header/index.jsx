@@ -16,7 +16,6 @@ const Header = () => {
   };
 
   return (
-    <header>
       <AppBar position="static" className="header">
         <Toolbar>
           <Typography className="logo">
@@ -45,26 +44,25 @@ const Header = () => {
             </>
           ) : (
             <div className="nav-buttons">
-              <Button>
-                <Link to="/" className="nav-link">Início</Link>
-              </Button>
-              <Button>
-                <Link to="/agendamento" className="nav-link">Agendamento</Link>
-              </Button>
-              <Button>
-                <Link to="/financeiro" className="nav-link">Financeiro</Link>
-              </Button>
-              <Button>
-                <Link to="/cadastro" className="nav-link">Cadastro</Link>
-              </Button>
-              <Button>
-                <Link to="/login" className="nav-link">Login</Link>
-              </Button>
-            </div>
+            <Button>
+              <Link to="/" className="nav-link">Início</Link>
+            </Button>
+            <Button>
+              <Link to="/login" className="nav-link">Agendamento</Link>
+            </Button>
+            <Button>
+              <Link to="/login" className="nav-link">Financeiro</Link>
+            </Button>
+            <Button>
+              <Link to="/cadastro" className="nav-link">Cadastro</Link>
+            </Button>
+            <Button>
+              <Link to="/login" className="nav-link">Login</Link>
+            </Button>
+          </div>
           )}
         </Toolbar>
       </AppBar>
-    </header>
   );
 };
 

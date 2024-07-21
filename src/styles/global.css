@@ -1,0 +1,59 @@
+:root {
+    /* Cores Primárias */
+    --blue-primary: #003366;
+    --secondary: #266146;
+    
+    /* Cores de Fundo e Texto */
+    --background: #FFFFFF;
+    --text-primary: #333333;
+    --background-secondary: #F8F9FA;
+
+    /* Cores de Destaque e Alerta */
+    --highlight-success: #28A745;
+    --highlight-error: #DC3545;
+
+    --footer:#243f36;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-sizing: border-box;
+    outline: none;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text-primary);
+    overflow-x: hidden;
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+    background: #fff;
+    border-radius: 5rem;
+}
+
+.alert-success {
+    background-color: var(--highlight-success);
+    color: var(--background);
+}
+
+.alert-error {
+    background-color: var(--highlight-error);
+    color: var(--background);
+}
+

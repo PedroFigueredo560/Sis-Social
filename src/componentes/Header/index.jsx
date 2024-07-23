@@ -20,7 +20,7 @@ const Header = () => {
         <Toolbar>
           <Typography className="logo">
             <Link to="/" className="logo-link">
-              Logo aqui
+              <img className='logo' src="src\assets\logo.png" alt="Logo_sis_social" />
             </Link>
           </Typography>
           {isMobile ? (

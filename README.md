@@ -45,6 +45,8 @@ Execute o comando `npm install` na raiz do projeto para instalar todas as depend
 **Iniciar o Projeto:**
 Utilize o comando `npm run dev` na raiz do projeto.
 
+> A página de agendamentos esta usando um servidor mokado, para testar e usar o servidor db.json execute o comando `npm install -g json-server
+` no terminal. pra rodar execute `json-server --watch db.json`
 ---
 
 <br>

@@ -1,13 +1,22 @@
 .header {
   background-color: var(--secondary) !important;
   display: flex;
-  justify-content: space-between;
-  padding: 0 10%;
+  justify-content: center;
   position: sticky;
+  padding: 0 10%;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
+}
+
+.Toolbar {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+  padding: 0 10px;
 }
 
 .header .logo {
@@ -41,9 +50,8 @@
 }
 
 .nav-link:hover {
-  color: rgb(132, 175, 134);
+  opacity: 0.8;
 }
-
 
 #menu-btn {
   display: none;
@@ -63,9 +71,9 @@
 
   .header .navbar {
     position: fixed;
-    right: -250px; 
+    right: -250px;
     width: 150px;
-    height: 100vh; 
+    height: 100vh;
     background-color: var(--secondary);
     color: white;
     display: flex;
@@ -74,11 +82,11 @@
     justify-content: center;
     transition: right 0.3s ease;
     z-index: 1000;
-    padding-top: 25rem; /
+    padding-top: 25rem;
   }
 
   .header .navbar.active {
-    right: 0; 
+    right: 0;
   }
 
   .header .navbar a {
@@ -90,7 +98,6 @@
     width: 100%;
     text-align: center;
   }
-
 }
 
 .logo{

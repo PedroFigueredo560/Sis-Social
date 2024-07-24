@@ -2,11 +2,15 @@
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background: url('../../assets/home.jpg') no-repeat;
+  /* background: url('../../assets/home.jpg') no-repeat; */
   background-size: cover;
   background-position: center;
-  padding: .8rem;
-  filter: blur(.2px);
+  padding: 0.8rem;
+  filter: blur(0.2px);
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
 .home .content {

@@ -115,9 +115,9 @@ const Appointments = () => {
               <p>ESCOLHA</p>
             </div>
             <div className="card-body">
-              <h3>Escolha o Tipo de Atendimento</h3>
+              <h3>Tipo de Atendimento</h3>
               <p>
-                Escolha se deseja realizar o atendimento com o assistente social
+                Escolha se deseja realizar o atendimento 
                 online ou presencial.
               </p>
             </div>

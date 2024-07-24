@@ -67,6 +67,11 @@ const Header = () => {
                 Financeiro
               </Link>
             </Button>
+            <Button>
+              <Link to="/cadastro" className="nav-link">
+                Cadastro
+              </Link>
+            </Button>
           </div>
         )}
       </Toolbar>

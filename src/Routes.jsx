@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Appointments from "./pages/agendamentos";
 import Login from "./pages/Login";
-import Register from "./pages/register";
+import Register from "./pages/Register";
 
 const AppRoutes = () => {
   return (

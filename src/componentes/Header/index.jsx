@@ -63,8 +63,11 @@ const Header = () => {
               </Link>
             </Button>
             <Button>
-              <Link to="/financeiro" className="nav-link">
-                Financeiro
+              <Link to="/financeiro" className="nav-link">Financeiro</Link>
+            </Button>
+            <Button>
+              <Link to="/cadastro" className="nav-link">
+                Cadastro
               </Link>
             </Button>
           </div>

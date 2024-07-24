@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.css";
-import '../service/service'
+import register_ben from '../service/service';
 
 
 const Register = () => {
@@ -20,7 +20,7 @@ const Register = () => {
                 <br />
                 Senha: <input type="password" id="password_ben" required />
                 <br />
-                <button className="register-button" onclick = 'register_ben()'>Cadastrar</button>
+                <button className="register-button" onClick = {register_ben} >Cadastrar</button>
             </h2></>
           }
         </div>

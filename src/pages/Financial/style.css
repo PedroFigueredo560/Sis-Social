@@ -1,0 +1,174 @@
+/* Estilo base para o container principal */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilos para o cabeçalho (h1) */
+  h1 {
+    text-align: center;
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilos para a seção de resumo */
+  .resumo {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .resumo h2 {
+    font-size: 2.7rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .resumo p {
+    font-size: 1.7rem;
+    color: #666;
+    margin-bottom: 5px;
+  }
+  
+  /* Estilos para a tabela de registros */
+  .tabela {
+    background-color: #fff;
+    font-size: 1.7rem;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .tabela table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .tabela th,
+  .tabela td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .tabela th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+  
+  /* Estilos para a seção de formulários */
+  .formularios {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .formularios h2 {
+    font-size: 2.7rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .formularios form {
+    font-size: 1.7rem;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  
+  .formularios label {
+    display: block;
+    width: 100px;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .formularios input,
+  .formularios select {
+    width: calc(100% - 110px);
+    padding: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+  }
+  
+  .formularios button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .formularios button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Estilos para a seção de relatórios (opcional) */
+  .relatorios {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .relatorios h2 {
+    font-size: 2.7rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .relatorios button {
+    padding: 10px 20px;
+    background-color: #3f51b5; /* Azul escuro */
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .relatorios button:hover {
+    background-color: #283a7c; /* Azul escuro mais forte */
+  }
+  
+  /* Estilos responsivos para telas menores */
+  @media (max-width: 768px) {
+    .formularios form {
+      flex-direction: column; /* Organiza os campos em coluna */
+    }
+  
+    .formularios label {
+      width: auto; /* Ocupa a largura total da linha */
+      margin-bottom: 10px;
+    }
+  
+    .formularios input,
+    .formularios select {
+      width: 100%; /* Ocupa a largura total da linha */
+    }
+    .acoes-container {
+        display: flex; /* Make the container a flexbox */
+        justify-content: center; /* Center the content horizontally */
+        align-items: center; /* Center the content vertically (optional) */
+      }
+      
+      .acoes-container button {
+        margin: 0 5px; /* Add some margin between buttons (optional) */
+      }
+  }

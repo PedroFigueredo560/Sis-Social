@@ -1,0 +1,26 @@
+{
+  "appointments": [
+    {
+      "id": "1614",
+      "appointmentType": "presencial",
+      "date": "2024-07-30",
+      "time": "",
+      "contactPhone": "7877777776",
+      "contactEmail": "ana@me.com",
+      "name": "ana",
+      "description": ""
+    }
+  ],
+  "notificationPreferences": [
+    {
+      "id": "1",
+      "email": true,
+      "sms": false
+    },
+    {
+      "id": "9613",
+      "email": true,
+      "sms": true
+    }
+  ]
+}

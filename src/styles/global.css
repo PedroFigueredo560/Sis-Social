@@ -2,11 +2,12 @@
     /* Cores Primárias */
     --blue-primary: #003366;
     --secondary: #266146;
+    --secondary-border: #95ada2;
     
     /* Cores de Fundo e Texto */
     --background: #FFFFFF;
     --text-primary: #333333;
-    --background-secondary: #F8F9FA;
+    --background-secondary: #fdfdfd;
 
     /* Cores de Destaque e Alerta */
     --highlight-success: #28A745;

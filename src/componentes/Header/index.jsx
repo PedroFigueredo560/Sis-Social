@@ -51,7 +51,7 @@ const Header = () => {
               <Link to="/login" className="nav-link">Agendamento</Link>
             </Button>
             <Button>
-              <Link to="/login" className="nav-link">Financeiro</Link>
+              <Link to="/financeiro" className="nav-link">Financeiro</Link>
             </Button>
             <Button>
               <Link to="/cadastro" className="nav-link">Cadastro</Link>

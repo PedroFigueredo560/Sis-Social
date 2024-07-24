@@ -43,7 +43,7 @@ Execute o comando `git clone https://github.com/PedroFigueredo560/Sis-Social-Fro
 Execute o comando `npm install` na raiz do projeto para instalar todas as dependências necessárias.
 
 **Iniciar o Projeto:**
-Utilize o comando `npm run dev` na raiz do projeto,  em outro terminal execute o comando `npm start` na raiz do projeto para para iniciar o servidor JSON, que irá rodar na porta `http://localhost:5173/`.
+Utilize o comando `npm run dev` na raiz do projeto.
 
 ---
 

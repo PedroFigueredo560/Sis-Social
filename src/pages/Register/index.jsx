@@ -29,3 +29,58 @@ const Register = () => {
   };
 
 export default Register;
+
+
+
+// funcionando
+
+// import React, { useState } from 'react';
+
+// function App() {
+//   const [response, setResponse] = useState(null);
+//   const [error, setError] = useState(null);
+
+//   const handleRegister = async () => {
+//     // Dados mockados
+//     const mockData = {
+//       "name_ben": "Joa Silva",
+//       "cpf": "1254334401",
+//       "services": "Serviço B",
+//       "user_ben": "joaosilva",
+//       "password_ben": "senha23"
+//   };
+  
+
+//     try {
+//       console.log('Registrando...');
+//       console.log('Data being sent:', mockData);
+
+//       const res = await fetch('http://127.0.0.1:5000/create_ben', {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(mockData)
+//       });
+
+//       if (!res.ok) {
+//         throw new Error('Erro ao registrar');
+//       }
+
+//       const result = await res.json();
+//       setResponse(result);
+//     } catch (err) {
+//       setError(err.message);
+//     }
+//   };
+
+//   return (
+//     <div>
+//       <button onClick={handleRegister}>Registrar Beneficiário</button>
+//       {response && <pre>{JSON.stringify(response, null, 2)}</pre>}
+//       {error && <p style={{ color: 'red' }}>{error}</p>}
+//     </div>
+//   );
+// }
+
+// export default App;

@@ -70,6 +70,11 @@ const Header = () => {
                 Cadastro
               </Link>
             </Button>
+            <Button>
+              <Link to="/login" className="nav-link">
+                Login
+              </Link>
+            </Button>
           </div>
         )}
       </Toolbar>

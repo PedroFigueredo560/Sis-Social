@@ -32,35 +32,35 @@
 
 
 
-funcionando
+//funcionando
 
 import React, { useState } from 'react';
+import "./style.css";
 
 function App() {
-  const [response, setResponse] = useState(null);
+  const [response] = useState(null);
   const [error, setError] = useState(null);
 
   const handleRegister = async () => {
     // Dados mockados
-    const mockData = {
-      "name_ben": "Joa Silva",
-      "cpf": "1254334401",
-      "services": "Serviço B",
-      "user_ben": "joaosilva",
-      "password_ben": "senha23"
-  };
-  
+    var data={
+      "name_ben": document.getElementById('nome').value,
+      "cpf": document.getElementById('cpf').value,
+      "services": 'Solicitante',
+      "user_ben": document.getElementById('user').value,
+      "password_ben": document.getElementById('password').value
+    }
 
     try {
       console.log('Registrando...');
-      console.log('Data being sent:', mockData);
+      console.log('Data being sent:', data);
 
       const res = await fetch('http://127.0.0.1:5000/create_ben', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(mockData)
+        body: JSON.stringify(data)
       });
 
       if (!res.ok) {
@@ -68,17 +68,34 @@ function App() {
       }
 
       const result = await res.json();
-      setResponse(result);
+      throw new MessageEvent(result);
     } catch (err) {
       setError(err.message);
     }
   };
 
   return (
-    <div>
-      <button onClick={handleRegister}>Registrar Beneficiário</button>
-      {response && <pre>{JSON.stringify(response, null, 2)}</pre>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+    <div className="register">
+      <div className="content">
+        {
+          <><h1>
+              Cadastro
+          </h1>
+          <h2>
+              Nome completo: <input type="text" id="nome" required/>
+              <br />
+              CPF: <input type="text" id="cpf" name="cpf" maxLength="14" />
+              <br />
+              Usuário: <input type="text" id="user" required />
+              <br />
+              Senha: <input type="password" id="password" required />
+              <br />
+              <button className='register-button' onClick={handleRegister}>Registrar</button>
+              {response && <pre>{JSON.stringify(response, null, 2)}</pre>}
+              {error && <p style={{ color: 'red' }}>{error}</p>}
+          </h2></>
+        }
+      </div>
     </div>
   );
 }

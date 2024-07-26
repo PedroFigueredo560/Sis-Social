@@ -1,55 +1,19 @@
-//import React from "react";
-//import "./style.css";
-//import register_ben from '../service/service';
-
-
-//const Register = () => {
-//    return (
-//      <div className="register">
-//        <div className="content">
-//          {
-//            <><h1>
-//                Cadastro
-//            </h1>
-//            <h2>
-//                Nome completo: <input type="text" id="nome_ben" required/>
-//                <br />
-//                CPF: <input type="text" id="cpf" name="cpf" maxLength="14" />
-//                <br />
-//                Usuário: <input type="text" id="user_ben" required />
-//                <br />
-//                Senha: <input type="password" id="password_ben" required />
-//                <br />
-//                <button className="register-button" onClick = {register_ben} >Cadastrar</button>
-//            </h2></>
-//          }
-//        </div>
-//      </div>
-//    );
-//  };
-
-//export default Register;
-
-
-
-//funcionando
-
 import React, { useState } from 'react';
-import "./style.css";
+import { useNavigate } from 'react-router-dom';
+import './style.css';
 
 function App() {
-  const [response] = useState(null);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const handleRegister = async () => {
-    // Dados mockados
-    var data={
+    const data = {
       "name_ben": document.getElementById('nome').value,
       "cpf": document.getElementById('cpf').value,
       "services": 'Solicitante',
       "user_ben": document.getElementById('user').value,
       "password_ben": document.getElementById('password').value
-    }
+    };
 
     try {
       console.log('Registrando...');
@@ -67,12 +31,17 @@ function App() {
         throw new Error('Erro ao registrar');
       }
 
-      const result = await res.json();
-      throw new MessageEvent(result);
+      // Successful registration, redirect to login page
+      navigate('/login');
     } catch (err) {
-      setError(err.message);
+      if (err.message === 'Erro ao registrar') {
+        setError('Ocorreu um erro ao registrar o usuário. Por favor, tente novamente.');
+      } else {
+        setError('Erro inesperado. Por favor, contate o suporte.');
+      }
     }
   };
+
 
   return (
     <div className="register">
@@ -91,7 +60,6 @@ function App() {
               Senha: <input type="password" id="password" required />
               <br />
               <button className='register-button' onClick={handleRegister}>Registrar</button>
-              {response && <pre>{JSON.stringify(response, null, 2)}</pre>}
               {error && <p style={{ color: 'red' }}>{error}</p>}
           </h2></>
         }

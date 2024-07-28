@@ -75,6 +75,11 @@ const Header = () => {
                 Login
               </Link>
             </Button>
+            <Button>
+              <Link to="/funcionarios" className="nav-link">
+                funcionarios
+              </Link>
+            </Button>
           </div>
         )}
       </Toolbar>

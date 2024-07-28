@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './style.css';
 
-function App() {
+function Register() {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
@@ -68,4 +68,4 @@ function App() {
   );
 }
 
-export default App;
+export default Register;

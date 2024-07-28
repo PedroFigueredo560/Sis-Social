@@ -6,6 +6,7 @@ import Appointments from "./pages/agendamentos";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Financial from "./pages/Financial";
+import Funcionarios from "./pages/Funcionarios";
 
 const AppRoutes = () => {
   return (
@@ -15,6 +16,7 @@ const AppRoutes = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/cadastro" element={<Register />}/>
       <Route path="/financeiro" element={<Financial/>}/>
+      <Route path="/funcionarios" element={<Funcionarios/>}/>
     </Routes>
   );
 };

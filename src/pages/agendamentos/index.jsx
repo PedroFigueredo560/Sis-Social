@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Toggle from "react-toggle";
 import "react-toggle/style.css";
 import "./style.css";
 import FormTemplate from "../../componentes/formTemplate";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Appointments = () => {
   const [appointmentType, setAppointmentType] = useState("presencial");
@@ -51,7 +52,7 @@ const Appointments = () => {
       const token = getToken(); // Obter o token
       const response = await axios.post("http://localhost:5000/create_agendamento", appointmentDetails, {
         headers: {
-          'Authorization': `Bearer ${token}` // Incluir o token no cabeçalho
+          'Authorization': `Bearer ${token}` 
         }
       });
       return response.data;
@@ -67,7 +68,7 @@ const Appointments = () => {
       const token = getToken(); // Obter o token
       const response = await axios.get("http://localhost:5000/agendamentos", {
         headers: {
-          'Authorization': `Bearer ${token}` // Incluir o token no cabeçalho
+          'Authorization': `Bearer ${token}` 
         }
       });
       setAppointments(response.data);
@@ -82,7 +83,7 @@ const Appointments = () => {
       const token = getToken(); // Obter o token
       await axios.delete(`http://localhost:5000/agendamento/${id}`, {
         headers: {
-          'Authorization': `Bearer ${token}` // Incluir o token no cabeçalho
+          'Authorization': `Bearer ${token}` 
         }
       });
       return true;
@@ -101,7 +102,7 @@ const Appointments = () => {
     e.preventDefault();
 
     if (!time) {
-      alert("Por favor, selecione um horário.");
+      toast.error("Por favor, selecione um horário.");
       return;
     }
 
@@ -132,14 +133,14 @@ const Appointments = () => {
 
       const result = await bookAppointment(appointmentDetails);
       if (result) {
-        alert("Agendamento realizado com sucesso!");
+        toast.success("Agendamento realizado com sucesso!");
         fetchAppointments();
       } else {
-        alert("Falha ao realizar agendamento.");
+        toast.error("Falha ao realizar agendamento.");
       }
     } catch (error) {
       console.error("Erro ao processar data e hora:", error);
-      alert("Erro ao processar data e hora. Por favor, verifique os valores inseridos.");
+      toast.error("Erro ao processar data e hora. Por favor, verifique os valores inseridos.");
     }
   };
 
@@ -148,9 +149,9 @@ const Appointments = () => {
     const result = await cancelAppointment(id);
     if (result) {
       setAppointments(appointments.filter((app) => app.id !== id));
-      alert("Agendamento cancelado com sucesso.");
+      toast.success("Agendamento cancelado com sucesso.");
     } else {
-      alert("Falha ao cancelar agendamento.");
+      toast.error("Falha ao cancelar agendamento.");
     }
   };
 
@@ -162,6 +163,7 @@ const Appointments = () => {
 
   return (
     <>
+      <ToastContainer />
       <FormTemplate isForm={false}>
         <h1>Agendamentos</h1>
         <section className="appointments-container">

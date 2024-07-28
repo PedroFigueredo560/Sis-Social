@@ -24,7 +24,7 @@ const Login = () => {
     if (response.ok) {
       login(data.token);
       console.log("Token armazenado no localStorage:", localStorage.getItem("token"));
-      navigate("/home");
+      navigate("/");
     } else {
       alert(data.message);
     }

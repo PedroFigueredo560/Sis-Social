@@ -25,6 +25,20 @@ h1{
   max-width: calc(33.333% - 2rem);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+.card h2{
+  font-size: 3rem;
+  font-weight: 400;
+}
+
+.card h3{
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.card p{
+  font-size: 1rem;
+  font-weight: 400;
+}
 
 .card:hover{
   background-color: var(--background-card-hover);

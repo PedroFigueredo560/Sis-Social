@@ -21,6 +21,10 @@ const Appointments = () => {
     sms: false,
   });
 
+  const getToken = () => {
+    return localStorage.getItem('token');
+  };
+
   // buscar slots disponíveis
   const fetchAvailableSlots = async (selectedDate) => {
     try {
@@ -44,7 +48,12 @@ const Appointments = () => {
   // agendar um atendimento
   const bookAppointment = async (appointmentDetails) => {
     try {
-      const response = await axios.post("http://localhost:5000/create_agendamento", appointmentDetails);
+      const token = getToken(); // Obter o token
+      const response = await axios.post("http://localhost:5000/create_agendamento", appointmentDetails, {
+        headers: {
+          'Authorization': `Bearer ${token}` // Incluir o token no cabeçalho
+        }
+      });
       return response.data;
     } catch (error) {
       console.error("Erro ao agendar atendimento:", error);
@@ -55,7 +64,12 @@ const Appointments = () => {
   // buscar todos os agendamentos
   const fetchAppointments = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/agendamentos");
+      const token = getToken(); // Obter o token
+      const response = await axios.get("http://localhost:5000/agendamentos", {
+        headers: {
+          'Authorization': `Bearer ${token}` // Incluir o token no cabeçalho
+        }
+      });
       setAppointments(response.data);
     } catch (error) {
       console.error("Erro ao carregar agendamentos:", error);
@@ -65,7 +79,12 @@ const Appointments = () => {
   // cancelar um agendamento
   const cancelAppointment = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/agendamento/${id}`);
+      const token = getToken(); // Obter o token
+      await axios.delete(`http://localhost:5000/agendamento/${id}`, {
+        headers: {
+          'Authorization': `Bearer ${token}` // Incluir o token no cabeçalho
+        }
+      });
       return true;
     } catch (error) {
       console.error("Erro ao cancelar agendamento:", error);
@@ -105,7 +124,7 @@ const Appointments = () => {
         descricao: description,
         status: "pendente",
         observacoes: "",
-        email_notification: preferences.email, // Usar a preferência para e-mail
+        email_notification: preferences.email, 
         email: contactEmail
       };
 
@@ -123,7 +142,6 @@ const Appointments = () => {
       alert("Erro ao processar data e hora. Por favor, verifique os valores inseridos.");
     }
   };
-
 
   // lidar com o cancelamento de um agendamento
   const handleCancel = async (id) => {
@@ -144,7 +162,7 @@ const Appointments = () => {
 
   return (
     <>
-      <FormTemplate onSubmit={handleSubmit}>
+      <FormTemplate isForm={false}>
         <h1>Agendamentos</h1>
         <section className="appointments-container">
           <section className="cards-grid">
@@ -233,11 +251,12 @@ const Appointments = () => {
             </label>
 
             <label>
-              E-mail:
+              Email:
               <input
                 type="email"
                 value={contactEmail}
                 onChange={(e) => setContactEmail(e.target.value)}
+                required
               />
             </label>
 
@@ -252,8 +271,12 @@ const Appointments = () => {
             </label>
 
             <label>
-              Horário:
-              <select value={time} onChange={(e) => setTime(e.target.value)}>
+              Hora:
+              <select
+                value={time}
+                onChange={(e) => setTime(e.target.value)}
+                required
+              >
                 <option value="">Selecione um horário</option>
                 {availableSlots.map((slot) => (
                   <option key={slot} value={slot}>
@@ -303,7 +326,6 @@ const Appointments = () => {
         </section>
       </FormTemplate>
     </>
-
   );
 };
 

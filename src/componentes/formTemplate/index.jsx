@@ -1,8 +1,16 @@
-import React from "react";
-import "./style.css"; 
+import React from 'react';
+import './style.css';
 
-const FormTemplate = ({ children, ...rest }) => {
-  return <form className="template-form" {...rest}>{children}</form>;
+const FormTemplate = ({ children, className, isForm = true, ...props }) => {
+  return isForm ? (
+    <form className={`form-template ${className}`} {...props}>
+      {children}
+    </form>
+  ) : (
+    <div className={`form-template ${className}`} {...props}>
+      {children}
+    </div>
+  );
 };
 
 export default FormTemplate;

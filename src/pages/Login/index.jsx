@@ -23,6 +23,7 @@ const Login = () => {
     const data = await response.json();
     if (response.ok) {
       login(data.token);
+      console.log("Token armazenado no localStorage:", localStorage.getItem("token"));
       navigate("/home");
     } else {
       alert(data.message);
@@ -48,7 +49,7 @@ const Login = () => {
         />
 
         <div className="buttons-container">
-          <button className='button' type="submit">login</button>
+          <button className='button' type="submit">Login</button>
         </div>
       </form>
     </div>

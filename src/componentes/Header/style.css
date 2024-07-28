@@ -21,12 +21,10 @@
 
 .header .logo {
   cursor: pointer;
-  color: var(--secondary);
 }
 
 .header .logo .logo-link {
   text-decoration: none;
-  color: white;
   font-size: 1.6rem;
 }
 
@@ -44,11 +42,13 @@
 
 .nav-link {
   text-decoration: none;
-  color: white;
+  color:#fdfcff;
   padding: 0 10px;
   font-size: 1.4rem;
 }
-
+Button{
+  color: blac !important;
+}
 .nav-link:hover {
   opacity: 0.8;
 }

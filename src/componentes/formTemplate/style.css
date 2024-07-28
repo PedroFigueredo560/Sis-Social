@@ -1,0 +1,269 @@
+.template-form {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 20px;
+  padding: 2rem;
+  border-radius: 12px;
+  display: flex;
+  margin: 0 auto;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text-color);
+  /* margin-top: 1rem; */
+}
+
+h3 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-top: .4rem;
+}
+
+p {
+  text-transform: uppercase;
+  margin-block: 1rem;
+  color: var(--text-primary);
+}
+
+.template-form label {
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  margin-top: 2rem;
+}
+
+.template-form input,
+.template-form select,
+.template-form textarea {
+  /* width: 100%; */
+  padding: 1rem;
+  font-size: 1.25rem;
+  border: 1px solid var(--details);
+  border-left-width: 0.5rem;
+  border-radius: 0.75rem 0.75rem;
+  transition: all 0.3s;
+}
+
+.template-form input:focus,
+textarea:focus,
+select:focus {
+  border-right-width: 8px;
+  border-color: var(--secondary-color);
+}
+
+@media (max-width: 511px) {
+  .template-form {
+    padding: 1rem;
+  }
+
+  .template-form h2 {
+    font-size: 1.25rem;
+  }
+
+  .template-form h3 {
+    font-size: 1.25rem;
+  }
+
+
+  .template-form input:focus {
+    border-right-width: 0.25rem;
+  }
+}
+
+.appointments-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header-section {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-bottom: 2rem;
+}
+
+.appointment-form {
+  width: 80%;
+  padding: 2rem 3rem;
+  border-radius: 8px;
+  border: solid 1px var(--secondary-border);
+  margin: 2.5rem auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 20px;
+  position: relative;
+  background-color: var(--background-secondary);
+}
+
+.appointment-form label,
+.appointment-form input,
+.appointment-form select,
+.appointment-form textarea,
+.appointment-form button {
+  font-size: 1.6rem;
+}
+
+.appointment-form label,
+.appointment-form input,
+.appointment-form select,
+.appointment-form textarea {
+  display: block;
+  width: 100%;
+  transition: border-color 0.4s ease;
+}
+
+.appointment-form label {
+  width: calc(50% - 10px);
+}
+
+.appointment-form button {
+  font-weight: 400;
+  padding: 0.8rem 5rem;
+  background-color: var(--secondary);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  position: absolute;
+  bottom: 20px;
+  right: 30px;
+  margin-top: 2rem;
+  color: var(--background-secondary);
+}
+
+.appointment-form button:hover {
+  opacity: 0.9;
+}
+
+.preferences-section .header-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-container input[type="checkbox"] {
+  width: 10%;
+}
+
+.checkbox-container p {
+  width: 80%;
+}
+
+
+@media (max-width: 768px) {
+  .appointment-form {
+    width: 100%;
+  }
+
+  .appointment-form label {
+    width: 100%;
+    padding: 0;
+  }
+
+  .appointment-form button {
+    position: static;
+    width: 100%;
+    margin-top: 2rem;
+  }
+
+  .preferences-section {
+    width: 100%;
+    margin-top: 2rem;
+  }
+
+  .toggle-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+  }
+
+  .header-section p {
+    font-size: 1rem;
+  }
+}
+
+/* Estilos para a lista de agendamentos */
+.appointment-list {
+  width: 80%;
+  padding: 2rem 3rem;
+  background-color: var(--background-secondary);
+  border-radius: 8px;
+  border: solid 1px var(--secondary-border);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 2rem auto;
+}
+
+/* .appointment-list h2 {
+      margin-bottom: 2rem;
+    } */
+
+.appointment-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.appointment-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  font-size: 1.6rem;
+  flex-wrap: wrap;
+}
+
+.appointment-list li div {
+  flex: 1;
+}
+
+.appointment-list button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 5px;
+}
+
+.appointment-list button:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .appointment-list {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .appointment-list li {
+    flex-direction: column;
+  }
+
+  .appointment-list li div {
+    width: 100%;
+  }
+
+  .appointment-list button {
+    width: 40%;
+    align-self: self-end;
+  }
+}

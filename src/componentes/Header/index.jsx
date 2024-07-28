@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { AppBar, Toolbar, Typography, IconButton, Button } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import "./style.css";
+import { AuthContext } from "../../layout/AuthContext";
 
 const Header = () => {
   const [menuActive, setMenuActive] = useState(false);
+  const { token, logout } = useContext(AuthContext);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -20,7 +22,7 @@ const Header = () => {
       <Toolbar className="Toolbar">
         <Typography className="logo">
           <Link to="/" className="logo-link">
-            <img className='logo' src="src\assets\logo.png" alt="Logo_sis_social" />
+            <img className="logo" src="src/assets/logo.png" alt="Logo_sis_social" />
           </Link>
         </Typography>
         {isMobile ? (
@@ -38,16 +40,28 @@ const Header = () => {
               <Link to="/" className="nav-link" onClick={toggleMenu}>
                 Início
               </Link>
-              <Link
-                to="/Agendamentos"
-                className="nav-link"
-                onClick={toggleMenu}
-              >
-                Agendamentos
-              </Link>
-              <Link to="/financeiro" className="nav-link" onClick={toggleMenu}>
-                Financeiro
-              </Link>
+              {token ? (
+                <>
+                  <Link to="/agendamentos" className="nav-link" onClick={toggleMenu}>
+                    Agendamentos
+                  </Link>
+                  <Link to="/financeiro" className="nav-link" onClick={toggleMenu}>
+                    Financeiro
+                  </Link>
+                  <Button onClick={() => { logout(); toggleMenu(); }} className="nav-link">
+                    Logout
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Link to="/cadastro" className="nav-link" onClick={toggleMenu}>
+                    Cadastro
+                  </Link>
+                  <Button onClick={logout} className="nav-link">
+                    Logout
+                  </Button>
+                </>
+              )}
             </nav>
           </>
         ) : (
@@ -57,19 +71,36 @@ const Header = () => {
                 Início
               </Link>
             </Button>
-            <Button>
-              <Link to="/Agendamentos" className="nav-link">
-                Agendamentos
-              </Link>
-            </Button>
-            <Button>
-              <Link to="/financeiro" className="nav-link">Financeiro</Link>
-            </Button>
-            <Button>
-              <Link to="/cadastro" className="nav-link">
-                Cadastro
-              </Link>
-            </Button>
+            {token ? (
+              <>
+                <Button>
+                  <Link to="/agendamentos" className="nav-link">
+                    Agendamentos
+                  </Link>
+                </Button>
+                <Button>
+                  <Link to="/financeiro" className="nav-link">
+                    Financeiro
+                  </Link>
+                </Button>
+                <Button onClick={logout} className="nav-link">
+                  Logout
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button>
+                  <Link to="/cadastro" className="nav-link">
+                    Cadastro
+                  </Link>
+                </Button>
+                <Button>
+                  <Link to="/login" className="nav-link">
+                    Login
+                  </Link>
+                </Button>
+              </>
+            )}
           </div>
         )}
       </Toolbar>

@@ -45,7 +45,7 @@ const Register = () => {
 
   return (
     <div className="register">
-      <h2>Cadastro</h2>
+      <h1>Cadastro</h1>
       <form className='formulario' onSubmit={(e) => { e.preventDefault(); handleRegister(); }}>
         <label>Nome completo</label>
         <input 

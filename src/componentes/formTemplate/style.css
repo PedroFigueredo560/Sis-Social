@@ -10,11 +10,10 @@
 }
 
 h2 {
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 600;
-  color: var(--secondary);
-  text-align: center;
-  margin-top: 2rem;
+  color: var(--text-color);
+  /* margin-top: 1rem; */
 }
 
 h3 {
@@ -167,7 +166,6 @@ select:focus {
 .checkbox-container p {
   width: 80%;
 }
-
 
 
 @media (max-width: 768px) {

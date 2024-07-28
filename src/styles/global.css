@@ -1,19 +1,23 @@
 :root {
     /* Cores Primárias */
     --blue-primary: #003366;
-    --secondary: #266146;
+    --secondary: #014d0db2;
     --secondary-border: #95ada2;
     
     /* Cores de Fundo e Texto */
-    --background: #FFFFFF;
-    --text-primary: #333333;
+    --background: #f8faf8;
+    --background-card: #99d8994d;
+    --background-card-hover: #99d89970;
+    --text-primary: #4d4949;
     --background-secondary: #fdfdfd;
 
-    /* Cores de Destaque e Alerta */
-    --highlight-success: #28A745;
-    --highlight-error: #DC3545;
 
     --footer:#243f36;
+    --primary-color: #1E62FE;
+    --secondary-color: #2f4e3f;
+    --text-color: #1c4e36;
+   
+    --details : #a0c2a4;
 
 }
 
@@ -46,15 +50,5 @@ html::-webkit-scrollbar-track {
 html::-webkit-scrollbar-thumb {
     background: #fff;
     border-radius: 5rem;
-}
-
-.alert-success {
-    background-color: var(--highlight-success);
-    color: var(--background);
-}
-
-.alert-error {
-    background-color: var(--highlight-error);
-    color: var(--background);
 }
 

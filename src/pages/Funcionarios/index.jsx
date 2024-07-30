@@ -5,8 +5,10 @@ import './style.css'; // Import your CSS file for styling
 function Funcionarios() {
   const [funcionarios, setFuncionarios] = useState([]);
   const [error, setError] = useState(null);
-  const [editFuncionarioId, setEditFuncionarioId] = useState(null);
+  const [editFuncionarioCpf, setEditFuncionarioCpf] = useState(null);
   const [editFuncionarioData, setEditFuncionarioData] = useState({ name: '', cpf: '', jobTitle: '' });
+  const navigate = useNavigate();
+  
 
   useEffect(() => {
     const fetchFuncionarios = async () => {
@@ -23,18 +25,17 @@ function Funcionarios() {
     fetchFuncionarios();
   }, []);
 
-  const handleEditFuncionario = (funcionarioId) => {
-    setEditFuncionarioId(funcionarioId);
-    const funcionarioToEdit = funcionarios.find((funcionario) => funcionario.id === funcionarioId);
-    setEditFuncionarioData({ name: funcionarioToEdit.name, cpf: funcionarioToEdit.cpf, jobTitle: funcionarioToEdit.jobTitle });
+  const handleEditFuncionario = (funcionarioCpf) => {
+    setEditFuncionarioCpf(funcionarioCpf); // Set the clicked cpf for editing
+    navigate('/edit_funcionario');
   };
 
-  const handleDeleteFuncionario = async (funcionarioId) => {
+  const handleDeleteFuncionario = async (funcionarioCpf) => {
     if (window.confirm('Are you sure you want to delete this funcionario?')) {
       try {
-        const response = await fetch(`http://localhost:5000/delete_funcionario/${funcionarioId}`, { method: 'DELETE' });
+        const response = await fetch(`http://localhost:5000/delete_funcionario/${funcionarioCpf}`, { method: 'DELETE' });
         if (response.ok) {
-          const updatedFuncionarios = funcionarios.filter((funcionario) => funcionario.id !== funcionarioId);
+          const updatedFuncionarios = funcionarios.filter((funcionario) => funcionario.cpf !== funcionarioCpf);
           setFuncionarios(updatedFuncionarios);
         } else {
           throw new Error('Failed to delete funcionario.');
@@ -49,13 +50,13 @@ function Funcionarios() {
   const handleEditSubmit = async (e) => {
     e.preventDefault();
 
-    if (!editFuncionarioId) {
-      console.error('Edit function called without a funcionario ID');
+    if (!editFuncionarioCpf) {
+      console.error('Edit function called without a funcionario CPF');
       return;
     }
 
     try {
-      const response = await fetch(`http://localhost:5000/update_funcionario/${editFuncionarioId}`, {
+      const response = await fetch(`http://localhost:5000/update_funcionario/${editFuncionarioCpf}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(editFuncionarioData),
@@ -63,10 +64,10 @@ function Funcionarios() {
       if (response.ok) {
         const updatedFuncionario = await response.json();
         const updatedFuncionarios = funcionarios.map((funcionario) =>
-          funcionario.id === updatedFuncionario.id ? updatedFuncionario : funcionario
+          funcionario.cpf === updatedFuncionario.cpf ? updatedFuncionario : funcionario
         );
         setFuncionarios(updatedFuncionarios);
-        setEditFuncionarioId(null);
+        setEditFuncionarioCpf(null);
         setEditFuncionarioData({ name: '', cpf: '', jobTitle: '' });
       } else {
         throw new Error('Failed to update funcionario.');
@@ -82,7 +83,7 @@ function Funcionarios() {
   };
 
   const handleCloseEditPopup = () => {
-    setEditFuncionarioId(null);
+    setEditFuncionarioCpf(null);
     setEditFuncionarioData({ name: '', cpf: '', jobTitle: '' });
   };
 
@@ -105,16 +106,17 @@ function Funcionarios() {
               </thead>
               <tbody>
                 {funcionarios.map((funcionario) => (
-                  <tr key={funcionario.id}>
-                    <td>{funcionario.name}</td>
+                  <tr key={funcionario.cpf}>
+                    <td>{funcionario.name_func}</td>
                     <td>{funcionario.cpf}</td>
-                    <td>{funcionario.jobTitle}</td>
+                    <td>{funcionario.job}</td>
                     <td>
-                      <button onClick={() => handleEditFuncionario(funcionario.id)}>Editar</button>
-                      <button onClick={() => handleDeleteFuncionario(funcionario.id)}>Excluir</button>
+                      <button onClick={() => handleEditFuncionario(funcionario.cpf)}>Editar</button>
+                      <button onClick={() => handleDeleteFuncionario(funcionario.cpf)}>Excluir</button>
+                      <button>Usuário/Senha</button>
                     </td>
                     {/* Edit Popup (conditionally rendered) */}
-                    {editFuncionarioId === funcionario.id && (
+                    {editFuncionarioCpf === funcionario.cpf && (
                       <EditFuncionarioPopup
                         funcionarioData={editFuncionarioData}
                         onSubmit={handleEditSubmit}

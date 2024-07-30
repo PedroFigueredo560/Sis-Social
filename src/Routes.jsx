@@ -24,7 +24,7 @@ const AppRoutes = () => {
         </Route>
       </Route>
       <Route path="/funcionarios" element={<Funcionarios />}/>
-      <Route path="/edit_funcionario" element={<EditFuncionarios />}/>
+      <Route path="/edit_funcionario/:cpf" element={<EditFuncionarios />} />
     </Routes>
   );
 };

@@ -5,60 +5,50 @@ import { toast, ToastContainer } from 'react-toastify';  
 import 'react-toastify/dist/ReactToastify.css';
 import './style.css';
 
-const EditFuncionario = ({ cpf }) => {
+const EditFuncionario = () => {
+  const [funcionario, setFuncionario] = useState([]);
+  const [error, setError] = useState('');
   const [nome, setNome] = useState('');
+  const {cpf} = useParams();
   const [job, setJob] = useState('');
   const [user, setUser] = useState('');
-  const [password, setPassword] = useState(''); // Consider security implications of pre-filling password
-  const [error, setError] = useState(null);
+  const [password, setPassword] = useState('');
   const navigate = useNavigate();
-  const [jobType, setJobType] = useState('');
-  const [cpfValue, setCpfValue] = useState(cpf);
-
-  const { id } = useParams(); // Assuming the URL uses "/edit/:id" format (might not be used)
 
   useEffect(() => {
-    const fetchFuncionario = async () => {
+    const fetchEditFuncionario = async () => {
       try {
-        const res = await fetch(`http://127.0.0.1:5000/get_funcionario/${cpf}`);
+        const res = await fetch(`http://127.0.0.1:5000/get_funcionario/${cpf}`, {method: 'GET'});
         if (!res.ok) {
           throw new Error('Erro ao buscar funcionário');
         }
         const data = await res.json();
-        setNome(data.name_func); // Assuming data.name_func exists
-        setCpfValue(data.cpf);
-        setJob(data.job);
-        setUser(data.user_func);
-        setPassword(data.password_func); // Consider security implications
+        setFuncionario(data)
       } catch (err) {
         setError(err.message);
       }
     };
 
-    fetchFuncionario();
+    fetchEditFuncionario();
   }, [cpf]);
 
-  const handleCpfChange = (e) => {
-    setCpfValue(e.target.value);
-}
-
   const handleEdit = async () => {
-    if (cpf.length !== 11) {
+    if (cpf.length !== 14) {
       setError('CPF inválido.');
       toast.error('CPF inválido.');
       return;
     }
 
     const data = {
-      name_func: nome, // Assuming data.name_func is used in the API
-      cpf, // Use the cpf prop directly
-      job,
-      user_func: user, // Assuming data.user_func is used in the API
-      password_func: password, // Consider security implications
-    };
+      'nome_func': nome,
+      'cpf': cpf,
+      'job': job,
+      'user_func': user,
+      'password_func': password
+    }
 
     try {
-      const res = await fetch(`http://127.0.0.1:5000/update_funcionario/${cpf}`, {
+      const res = await fetch('http://127.0.0.1:5000/update_funcionario', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -75,7 +65,7 @@ const EditFuncionario = ({ cpf }) => {
       } else {
         toast.success('Funcionário editado com sucesso!', { autoClose: 3000 });
         setTimeout(() => {
-          navigate('/funcionario'); // Assuming route for listing funcionarios
+          navigate('/funcionarios'); // Assuming route for listing funcionarios
         }, 3000);
       }
     } catch (err) {
@@ -95,39 +85,20 @@ const EditFuncionario = ({ cpf }) => {
   return (
     <div className="edit">
       <ToastContainer />
-      <div className="card">
-        <div className="card-header">
-          <h2>Dados originais</h2>
-        </div>
-        <div className="card-body">
-          {nome && <p>Nome: {nome}</p>} {}
-          {job && <p>Cargo: {job}</p>} {}
-          {cpfValue && <p>CPF: {cpfValue}</p>} {}
-          {user && <p>Usuário: {user}</p>} {}
-          {password && <p>Senha: {password}</p>} {}
-        </div>
-      </div>
       <h1>Editar funcionário</h1>
-      <form className='formulario' onSubmit={(e) => { e.preventDefault(); handleRegister(); }}>
+      <form className='formulario' onSubmit={(e) => { e.preventDefault(); handleEdit(); }}>
         <label>Nome completo</label>
         <input 
-          type="text" 
-          placeholder="Nome completo"
+          type='text'
+          placeholder={funcionario.nome_func}
           value={nome}
           onChange={(e) => setNome(e.target.value)}
           required 
         />
         <label>CPF</label>
-        <input 
-          type="text" 
-          placeholder="CPF"
-          value={cpfValue}  // Use the state variable
-          onChange={handleCpfChange}
-          maxLength="11" 
-          required 
-        />
+        {funcionario.cpf && <p>{funcionario.cpf}</p>} {}
         <label>Função</label>
-        <select value={jobType} onChange={(e) => setJobType(e.target.value)}>
+        <select value={job} onChange={(e) => setJob(e.target.value)}>
           <option value="Assistente social">Assistente social</option>
           <option value="Coordenador">Coordenador</option>
           <option value="Administrador">Administrador</option>
@@ -135,7 +106,7 @@ const EditFuncionario = ({ cpf }) => {
         <label>Usuário</label>
         <input 
           type="text" 
-          placeholder="Usuário"
+          placeholder={funcionario.user_func}
           value={user}
           onChange={(e) => setUser(e.target.value)}
           required 
@@ -143,13 +114,13 @@ const EditFuncionario = ({ cpf }) => {
         <label>Senha</label>
         <input 
           type="password" 
-          placeholder="Senha"
+          placeholder={funcionario.password_func}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required 
         />
         <div className="buttons-container">
-          <button className='button' type="submit">Registrar</button>
+          <button className='button' type="submit">Alterar</button>
         </div>
         {error && <p className="error-message">{error}</p>}
       </form>

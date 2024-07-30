@@ -27,7 +27,7 @@ function Funcionarios() {
 
   const handleEditFuncionario = (funcionarioCpf) => {
     setEditFuncionarioCpf(funcionarioCpf); // Set the clicked cpf for editing
-    navigate('/edit_funcionario');
+    navigate(`/edit_funcionario/${funcionarioCpf}`);
   };
 
   const handleDeleteFuncionario = async (funcionarioCpf) => {

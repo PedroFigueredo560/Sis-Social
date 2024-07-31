@@ -9,6 +9,7 @@ import { PrivateArea } from "./layout/PrivateArea";
 import LoggedAreaLayout from "./layout/LoggedAreaLayout";
 import Funcionarios from "./pages/Funcionarios";
 import EditFuncionarios from "./pages/EditFuncionarios";
+import Documentos from "./pages/DocumentModel";
 
 const AppRoutes = () => {
   return (
@@ -21,11 +22,13 @@ const AppRoutes = () => {
           <Route path="/home" element={<Home />} />
           <Route path="/agendamentos" element={<Appointments />} />
           <Route path="/financeiro" element={<Financial />} />
+          <Route path="/documentos" element={<Documentos />} />
         </Route>
       </Route>
       <Route path="/funcionarios" element={<Funcionarios />}/>
       <Route path="/edit_funcionario/:cpf" element={<EditFuncionarios />} />
     </Routes>
+
   );
 };
 

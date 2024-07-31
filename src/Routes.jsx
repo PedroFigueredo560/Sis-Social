@@ -9,6 +9,7 @@ import { PrivateArea } from "./layout/PrivateArea";
 import LoggedAreaLayout from "./layout/LoggedAreaLayout";
 import Funcionarios from "./pages/Funcionarios";
 import EditFuncionarios from "./pages/EditFuncionarios";
+import RegistrarFuncionarios from "./pages/RegistrarFuncionarios";
 
 const AppRoutes = () => {
   return (
@@ -25,6 +26,7 @@ const AppRoutes = () => {
       </Route>
       <Route path="/funcionarios" element={<Funcionarios />}/>
       <Route path="/edit_funcionario/:cpf" element={<EditFuncionarios />} />
+      <Route path="/registrar_funcionario" element={<RegistrarFuncionarios />} />
     </Routes>
   );
 };

@@ -9,6 +9,9 @@ import { PrivateArea } from "./layout/PrivateArea";
 import LoggedAreaLayout from "./layout/LoggedAreaLayout";
 import Funcionarios from "./pages/Funcionarios";
 import EditFuncionarios from "./pages/EditFuncionarios";
+import RegistrarFuncionarios from "./pages/RegistrarFuncionarios";
+import Beneficiarios from "./pages/Beneficiario";
+import EditBeneficiarios from "./pages/EditBeneficiario";
 import Documentos from "./pages/DocumentModel";
 
 const AppRoutes = () => {
@@ -27,6 +30,9 @@ const AppRoutes = () => {
       </Route>
       <Route path="/funcionarios" element={<Funcionarios />}/>
       <Route path="/edit_funcionario/:cpf" element={<EditFuncionarios />} />
+      <Route path="/registrar_funcionario" element={<RegistrarFuncionarios />} />
+      <Route path="/beneficiarios" element={<Beneficiarios />} />
+      <Route path="/edit_beneficiario/:cpf" element={<EditBeneficiarios />} />
     </Routes>
 
   );

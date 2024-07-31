@@ -25,6 +25,10 @@ function Funcionarios() {
     fetchFuncionarios();
   }, []);
 
+  const handleRegisterFuncionario = async () => {
+    navigate("/registrar_funcionario");
+  };
+
   const handleEditFuncionario = (funcionarioCpf) => {
     setEditFuncionarioCpf(funcionarioCpf); // Set the clicked cpf for editing
     navigate(`/edit_funcionario/${funcionarioCpf}`);
@@ -59,6 +63,7 @@ function Funcionarios() {
       <div className="content">
         <h1>Funcionários</h1>
         <h2>
+          <button onClick={handleRegisterFuncionario}>Registrar</button>
           {error ? (
             <p className="error-message">{error}</p>
           ) : (

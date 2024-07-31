@@ -1,4 +1,4 @@
-/* .register {
+/* .edit {
     background-color: rgb(132, 175, 134);
     width: 50%;
     text-align: center;
@@ -13,7 +13,7 @@
     margin-bottom: 100px;
 }
 
-.register .content h1{
+.edit .content h1{
     padding: 3%;
     margin-bottom: 10px;
     background-color: rgb(120, 150, 120);
@@ -23,13 +23,13 @@
     font-size: 25px;
 }
 
-.register .content h2{
+.edit .content h2{
     text-align: right;
     margin-right: 10px;
     font-size: 25px;
 }
 
-.register .content h2 input{
+.edit .content h2 input{
     width: 60%;
     height: 25px;
     margin-bottom: 10px;
@@ -38,7 +38,7 @@
     border-radius: 5px;
 }
 
-.register-button{
+.edit-button{
     margin-right: 200px;
     width: 25%;
     height: 25px;
@@ -46,17 +46,17 @@
     border-radius: 10px;
 }
 
-.register-button:hover{
+.edit-button:hover{
     background-color: lightgray;
 }
 
-.register-button:active{
+.edit-button:active{
     background-color: grey;
 } */
 
 
 /* style.css */
-.register {
+.edit {
     min-height: 90vh;
     padding-top: 2rem;
 }
@@ -155,11 +155,11 @@ textarea:focus {
     textarea:focus {
         border-right-width: 0.25rem;
     }
-    .register {
+    .edit {
         padding: 1rem;
       }
     
-      .register h1{
+      .edit h1{
         font-size: rem;
       }
     

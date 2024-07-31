@@ -7,6 +7,8 @@ import Register from "./pages/Register";
 import Financial from "./pages/Financial";
 import { PrivateArea } from "./layout/PrivateArea";
 import LoggedAreaLayout from "./layout/LoggedAreaLayout";
+import Funcionarios from "./pages/Funcionarios";
+import EditFuncionarios from "./pages/EditFuncionarios";
 
 const AppRoutes = () => {
   return (
@@ -21,6 +23,8 @@ const AppRoutes = () => {
           <Route path="/financeiro" element={<Financial />} />
         </Route>
       </Route>
+      <Route path="/funcionarios" element={<Funcionarios />}/>
+      <Route path="/edit_funcionario/:cpf" element={<EditFuncionarios />} />
     </Routes>
   );
 };

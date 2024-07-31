@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './style.css';
 
 const Register = () => {
@@ -11,6 +13,12 @@ const Register = () => {
   const navigate = useNavigate();
 
   const handleRegister = async () => {
+    if (cpf.length !== 11) {
+      setError('CPF inválido.');
+      toast.error('CPF inválido.');
+      return;
+    }
+
     const data = {
       name_ben: nome,
       cpf: cpf,
@@ -30,21 +38,33 @@ const Register = () => {
 
       if (!res.ok) {
         const response = await res.json();
+        if (response.error.includes('value too long for type character varying(11)')) {
+          throw new Error('CPF inválido.');
+        }
         throw new Error(response.error || 'Erro ao registrar');
       } else {
-        navigate('/login');  
+        toast.success('Usuário registrado com sucesso!', { autoClose: 3000 });
+        setTimeout(() => {
+          navigate('/login');
+        }, 3000); 
       }
     } catch (err) {
-      if (err.message === 'Erro ao registrar') {
+      if (err.message === 'CPF inválido.') {
+        setError('CPF inválido.');
+        toast.error('CPF inválido.');
+      } else if (err.message === 'Erro ao registrar') {
         setError('Ocorreu um erro ao registrar o usuário. Por favor, tente novamente.');
+        toast.error('Ocorreu um erro ao registrar o usuário. Por favor, tente novamente.');
       } else {
         setError('Erro inesperado. Por favor, contate o suporte.');
+        toast.error('Erro inesperado. Por favor, contate o suporte.');
       }
     }
   };
 
   return (
     <div className="register">
+      <ToastContainer />
       <h1>Cadastro</h1>
       <form className='formulario' onSubmit={(e) => { e.preventDefault(); handleRegister(); }}>
         <label>Nome completo</label>
@@ -61,7 +81,7 @@ const Register = () => {
           placeholder="CPF"
           value={cpf}
           onChange={(e) => setCpf(e.target.value)}
-          maxLength="14" 
+          maxLength="11" 
           required 
         />
         <label>Usuário</label>

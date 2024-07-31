@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { toast, ToastContainer } from 'react-toastify';   
-
+import { toast, ToastContainer } from 'react-toastify';  
 import 'react-toastify/dist/ReactToastify.css';
 import './style.css';
 
 const EditFuncionario = () => {
-  const [funcionario, setFuncionario] = useState([]);
+  const [funcionario, setFuncionario] = useState(null);
   const [error, setError] = useState('');
   const [nome, setNome] = useState('');
-  const {cpf} = useParams();
+  const { cpf } = useParams();
   const [job, setJob] = useState('');
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
@@ -18,12 +17,16 @@ const EditFuncionario = () => {
   useEffect(() => {
     const fetchEditFuncionario = async () => {
       try {
-        const res = await fetch(`http://127.0.0.1:5000/get_funcionario/${cpf}`, {method: 'GET'});
+        const res = await fetch(`http://127.0.0.1:5000/get_funcionario/${cpf}`, { method: 'GET' });
         if (!res.ok) {
           throw new Error('Erro ao buscar funcionário');
         }
         const data = await res.json();
-        setFuncionario(data)
+        setFuncionario(data);
+        setNome(data.name_func);
+        setJob(data.job);
+        setUser(data.user_func);
+        setPassword(data.password_func);
       } catch (err) {
         setError(err.message);
       }
@@ -33,14 +36,14 @@ const EditFuncionario = () => {
   }, [cpf]);
 
   const handleEdit = async () => {
-    if (cpf.length !== 14) {
+    if (cpf.length !== 11) {
       setError('CPF inválido.');
       toast.error('CPF inválido.');
       return;
     }
 
     const data = {
-      'nome_func': nome,
+      'name_func': nome,
       'cpf': cpf,
       'job': job,
       'user_func': user,
@@ -58,29 +61,20 @@ const EditFuncionario = () => {
 
       if (!res.ok) {
         const response = await res.json();
-        if (response.error.includes('value too long for type character varying(11)')) {
-          throw new Error('CPF inválido.');
-        }
         throw new Error(response.error || 'Erro ao editar');
       } else {
         toast.success('Funcionário editado com sucesso!', { autoClose: 3000 });
         setTimeout(() => {
-          navigate('/funcionarios'); // Assuming route for listing funcionarios
+          navigate('/funcionarios'); 
         }, 3000);
       }
     } catch (err) {
-      if (err.message === 'CPF inválido.') {
-        setError('CPF inválido.');
-        toast.error('CPF inválido.');
-      } else if (err.message === 'Erro ao editar') {
-        setError('Ocorreu um erro ao editar o funcionário. Por favor, tente novamente.');
-        toast.error('Ocorreu um erro ao editar o funcionário. Por favor, tente novamente.');
-      } else {
-        setError('Erro inesperado. Por favor, contate o suporte.');
-        toast.error('Erro inesperado. Por favor, contate o suporte.');
-      }
+      setError(err.message);
+      toast.error(err.message);
     }
   };
+
+  if (!funcionario) return <p>Loading...</p>;
 
   return (
     <div className="edit">
@@ -90,13 +84,13 @@ const EditFuncionario = () => {
         <label>Nome completo</label>
         <input 
           type='text'
-          placeholder={funcionario.nome_func}
+          placeholder={funcionario.name_func}
           value={nome}
           onChange={(e) => setNome(e.target.value)}
           required 
         />
         <label>CPF</label>
-        {funcionario.cpf && <p>{funcionario.cpf}</p>} {}
+        <p>{funcionario.cpf}</p>
         <label>Função</label>
         <select value={job} onChange={(e) => setJob(e.target.value)}>
           <option value="Assistente social">Assistente social</option>

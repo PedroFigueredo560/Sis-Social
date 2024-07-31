@@ -4,7 +4,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './style.css';
 
-const RegistrarFuncionarios= () => {
+const RegistrarFuncionarios = () => {
   const [nome, setNome] = useState('');
   const [cpf, setCpf] = useState('');
   const [job, setJob] = useState('');
@@ -14,18 +14,20 @@ const RegistrarFuncionarios= () => {
   const navigate = useNavigate();
 
   const handleRegister = async () => {
-    if (cpf.length !== 14) {
+    
+    const cleanedCpf = cpf.replace(/\D/g, '');
+    if (cleanedCpf.length !== 11) {
       setError('CPF inválido.');
       toast.error('CPF inválido.');
       return;
     }
 
     const data = {
-      'name_func': nome,
-      'cpf': cpf,
-      'job': job,
-      'user_func': user,
-      'password_func': password,
+      name_func: nome,
+      cpf: cleanedCpf, 
+      job: job,
+      user_func: user,
+      password_func: password,
     };
 
     try {
@@ -39,25 +41,20 @@ const RegistrarFuncionarios= () => {
 
       if (!res.ok) {
         const response = await res.json();
-        if (response.error.includes('value too long for type character varying(11)')) {
-          throw new Error('CPF inválido.');
-        }
         throw new Error(response.error || 'Erro ao registrar');
       } else {
         toast.success('Usuário registrado com sucesso!', { autoClose: 3000 });
         setTimeout(() => {
           navigate('/funcionarios');
-        }, 3000); 
+        }, 3000);
       }
     } catch (err) {
+      setError(err.message);
       if (err.message === 'CPF inválido.') {
-        setError('CPF inválido.');
         toast.error('CPF inválido.');
       } else if (err.message === 'Erro ao registrar') {
-        setError('Ocorreu um erro ao registrar o usuário. Por favor, tente novamente.');
         toast.error('Ocorreu um erro ao registrar o usuário. Por favor, tente novamente.');
       } else {
-        setError('Erro inesperado. Por favor, contate o suporte.');
         toast.error('Erro inesperado. Por favor, contate o suporte.');
       }
     }
@@ -79,17 +76,17 @@ const RegistrarFuncionarios= () => {
         <label>CPF</label>
         <input 
           type="text" 
-          placeholder="CPF"
+          placeholder="CPF (11 dígitos)"
           value={cpf}
           onChange={(e) => setCpf(e.target.value)}
-          maxLength="14" 
+          maxLength="14"
           required 
         />
         <label>Função</label>
         <select value={job} onChange={(e) => setJob(e.target.value)}>
-            <option value="Assistente social">Assistente social</option>
-            <option value="Coordenador">Coordenador</option>
-            <option value="Administrador">Administrador</option>
+          <option value="Assistente social">Assistente social</option>
+          <option value="Coordenador">Coordenador</option>
+          <option value="Administrador">Administrador</option>
         </select>
         <label>Usuário</label>
         <input 

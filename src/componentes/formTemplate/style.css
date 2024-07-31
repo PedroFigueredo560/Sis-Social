@@ -258,12 +258,11 @@ select:focus {
     flex-direction: column;
   }
 
-  .appointment-list li div {
+  .appointment-list li div { 
     width: 100%;
   }
 
   .appointment-list button {
-    width: 40%;
     align-self: self-end;
   }
 }

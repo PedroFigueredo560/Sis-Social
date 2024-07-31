@@ -21,11 +21,11 @@ const RegistrarFuncionarios= () => {
     }
 
     const data = {
-      name_func: nome,
-      cpf: cpf,
-      job: job,
-      user_func: user,
-      password_func: password,
+      'name_func': nome,
+      'cpf': cpf,
+      'job': job,
+      'user_func': user,
+      'password_func': password,
     };
 
     try {

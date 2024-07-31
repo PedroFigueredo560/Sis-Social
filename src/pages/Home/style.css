@@ -1,54 +1,207 @@
 .home {
   min-height: 100vh;
   display: flex;
-  align-items: center;
-  background: url('../../assets/home.jpeg') no-repeat;
+  flex-direction: column;
+  justify-content: center;
+  background: url('../../assets/home2.avif') no-repeat;
   background-size: cover;
   background-position: center;
   padding: 0.8rem;
-  filter: blur(0.2px);
   margin: 0 auto;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 8rem;
 }
 
-.home .content {
+.home .content-home {
   max-width: 60rem;
 }
 
-.home .content h1 {
-  font-size: 2.6rem;
+.home .content-home h1 {
+  font-size: 3rem;
   text-transform: uppercase;
-  color: var(--blue-primary);
+  color: #002010;
+  font-weight: 700;
 }
 
-.home .content p {
+.home .content-home p {
   font-size: 2rem;
+  color: #002010;
   line-height: 1.8;
   padding: 1.4rem 0;
 }
 
+.about {
+  width: 80%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem 0;
+  display: flex;
+  align-items: center;
+  justify-content-home: center;
+  background-color: #fafafa;
+  border-bottom: 1px solid #beb6b9;
+  border-radius: 2px;
+  flex-wrap: wrap;
+}
+
+.about-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.about-image {
+  flex: 1;
+  max-width: 45rem;
+}
+
+.about-image img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.about-text {
+  flex: 1;
+  padding: 2rem;
+}
+
+.about-text, .services h2 {
+  font-size: 2.5rem;
+  color: #455a43;
+  margin-bottom: 1rem;
+}
+
+.about-text p {
+  font-size: 1.4rem;
+  color: #455a43;
+  line-height: 1.8;
+}
+
+.services {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8rem 0;
+}
+
+.cards {
+  max-width: 90rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.card {
+  background: #ffffff;
+  padding: 1.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 300px;
+  text-align: left;
+  border-radius: 10px;
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Estilo para a seção contact */
+.contact {
+  width: 80%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  text-align: center;
+  font-size: 2rem;
+  padding: 2rem 0;
+}
+
+.contact h2 {
+  font-size: 2.5rem;
+  color: #455a43;
+  margin-bottom: 1rem;
+}
+
+.contact form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact label {
+  font-size: 1rem;
+}
+
+.contact input, .contact textarea {
+  padding: 10px;
+  font-size: 1rem;
+  width: 100%;
+  max-width: 500px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.contact button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.contact button:hover {
+  background: #0056b3;
+}
+
+/* Media queries */
 @media (max-width: 768px) {
-  .home .content h1 {
+  .home .content-home h1 {
     font-size: 2rem;
   }
 
-  .home .content p {
+  .home .content-home p {
     font-size: 1.6rem;
+  }
+
+  .about-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-text {
+    margin-top: 20px;
+  }
+
+  .about-text h2, .contact h2 {
+    font-size: 2rem;
+  }
+
+  .card {
+    max-width: 100%;
   }
 }
 
 @media (max-width: 480px) {
   .home {
     min-height: 40vh;
-    background: none;
   }
 
-  .home .content h1 {
+  .home .content-home h1 {
     font-size: 1.6rem;
   }
 
-  .home .content p {
+  .home .content-home p {
     font-size: 1.4rem;
   }
 }

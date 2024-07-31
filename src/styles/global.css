@@ -1,13 +1,13 @@
 :root {
     /* Cores Primárias */
     --blue-primary: #003366;
-    --secondary: #014d0db2;
+    --secondary: #316e3ab2;
     --secondary-border: #95ada2;
 
     /* Cores de Fundo e Texto */
-    --background: #f8faf8;
-    --background-card: #99d8994d;
-    --background-card-hover: #99d89970;
+    --background: #edfded;
+    --background-card: #0000004d;
+    --background-card-hover: #538b5370;
     --text-primary: #4d4949;
     --background-secondary: #fdfdfd;
 
@@ -35,6 +35,7 @@ body {
     background-color: var(--background);
     color: var(--text-primary);
     overflow-x: hidden;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 html {
@@ -58,4 +59,8 @@ h1 {
     font-size: calc(1.375rem + 1vw);
     margin: 4rem 0 0 0;
     color: var(--text-color)
+}
+
+section{
+    padding: 6rem;
 }

@@ -49,7 +49,7 @@ const Appointments = () => {
   // agendar um atendimento
   const bookAppointment = async (appointmentDetails) => {
     try {
-      const token = getToken(); // Obter o token
+      const token = getToken(); 
       const response = await axios.post("http://localhost:5000/create_agendamento", appointmentDetails, {
         headers: {
           'Authorization': `Bearer ${token}` 
@@ -65,7 +65,7 @@ const Appointments = () => {
   // buscar todos os agendamentos
   const fetchAppointments = async () => {
     try {
-      const token = getToken(); // Obter o token
+      const token = getToken(); 
       const response = await axios.get("http://localhost:5000/agendamentos", {
         headers: {
           'Authorization': `Bearer ${token}` 
@@ -80,8 +80,8 @@ const Appointments = () => {
   // cancelar um agendamento
   const cancelAppointment = async (id) => {
     try {
-      const token = getToken(); // Obter o token
-      await axios.delete(`http://localhost:5000/agendamento/${id}`, {
+      const token = getToken(); 
+      await axios.delete(api +`http://localhost:5000/agendamento/${id}`, {
         headers: {
           'Authorization': `Bearer ${token}` 
         }
@@ -319,7 +319,7 @@ const Appointments = () => {
             <ul>
               {appointments.map((app) => (
                 <li key={app.id}>
-                  {new Date(app.data).toLocaleDateString()} - {new Date(app.data).toLocaleTimeString()} ({app.tipo_atendimento})
+                  {new Date(app.data).toLocaleDateString()} - {new Date(app.data).toLocaleTimeString()} 
                   <button onClick={() => handleCancel(app.id)}>Cancelar</button>
                 </li>
               ))}

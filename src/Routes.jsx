@@ -12,6 +12,7 @@ import EditFuncionarios from "./pages/EditFuncionarios";
 import RegistrarFuncionarios from "./pages/RegistrarFuncionarios";
 import Beneficiarios from "./pages/Beneficiario";
 import EditBeneficiarios from "./pages/EditBeneficiario";
+import Documentos from "./pages/DocumentModel";
 import Servicos from "./pages/Serviços";
 import EditServicos from "./pages/EditServicos";
 import RegistrarServicos from "./pages/RegistrarServicos";
@@ -27,6 +28,7 @@ const AppRoutes = () => {
           <Route path="/home" element={<Home />} />
           <Route path="/agendamentos" element={<Appointments />} />
           <Route path="/financeiro" element={<Financial />} />
+          <Route path="/documentos" element={<Documentos />} />
         </Route>
       </Route>
       <Route path="/funcionarios" element={<Funcionarios />}/>
@@ -38,6 +40,7 @@ const AppRoutes = () => {
       <Route path="/edit_servicos/:nome" element={<EditServicos />} />
       <Route path="registrar_servicos" element={<RegistrarServicos/>}/>
     </Routes>
+
   );
 };
 

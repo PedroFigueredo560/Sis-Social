@@ -48,6 +48,9 @@ const Header = () => {
                   <Link to="/financeiro" className="nav-link" onClick={toggleMenu}>
                     Financeiro
                   </Link>
+                  <Link to="/documentos" className="nav-link" onClick={toggleMenu}>
+                    Documentos
+                  </Link>
                   <Button onClick={() => { logout(); toggleMenu(); }} className="nav-link">
                     Logout
                   </Button>
@@ -81,6 +84,11 @@ const Header = () => {
                 <Button>
                   <Link to="/financeiro" className="nav-link">
                     Financeiro
+                  </Link>
+                </Button>
+                <Button>
+                  <Link to="/documentos" className="nav-link">
+                    Documentos
                   </Link>
                 </Button>
                 <Button onClick={logout} className="nav-link">

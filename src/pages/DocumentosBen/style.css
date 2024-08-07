@@ -1,0 +1,43 @@
+.file-upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 25px;
+}
+
+.upload-section {
+  display: flex;
+  width: 100%;
+  margin-bottom: 20px;
+  margin-top: 30px;
+  justify-content: center; 
+}
+.uploaded-files {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  justify-content: center; 
+}
+
+.pdf-box {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 10px; /* Adjust margin for better spacing */
+  background-color: var(--secondary);
+  text-align: center;
+  cursor: pointer;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+#inp{
+  width: 350px;
+}

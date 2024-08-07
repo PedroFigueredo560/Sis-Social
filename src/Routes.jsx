@@ -16,6 +16,7 @@ import Documentos from "./pages/DocumentModel";
 import Servicos from "./pages/Serviços";
 import EditServicos from "./pages/EditServicos";
 import RegistrarServicos from "./pages/RegistrarServicos";
+import DocumentosBen from "./pages/DocumentosBen";
 
 const AppRoutes = () => {
   return (
@@ -29,6 +30,7 @@ const AppRoutes = () => {
           <Route path="/agendamentos" element={<Appointments />} />
           <Route path="/financeiro" element={<Financial />} />
           <Route path="/documentos" element={<Documentos />} />
+          <Route path="/documentosben" element={<DocumentosBen />} />
         </Route>
       </Route>
       <Route path="/funcionarios" element={<Funcionarios />}/>
@@ -39,6 +41,7 @@ const AppRoutes = () => {
       <Route path="/servicos" element={<Servicos />} />
       <Route path="/edit_servicos/:nome" element={<EditServicos />} />
       <Route path="registrar_servicos" element={<RegistrarServicos/>}/>
+      
     </Routes>
 
   );

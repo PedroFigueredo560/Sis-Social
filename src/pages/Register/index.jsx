@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './style.css';
+import RegisterImage from '../../assets/register.avif';
+import Header from '../../componentes/Header';
 
 const Register = () => {
   const [nome, setNome] = useState('');
@@ -46,7 +48,7 @@ const Register = () => {
         toast.success('Usuário registrado com sucesso!', { autoClose: 3000 });
         setTimeout(() => {
           navigate('/login');
-        }, 3000); 
+        }, 3000);
       }
     } catch (err) {
       if (err.message === 'CPF inválido.') {
@@ -63,50 +65,61 @@ const Register = () => {
   };
 
   return (
+    <>
+    <Header/>
     <div className="register">
       <ToastContainer />
-      <h1>Cadastro</h1>
-      <form className='formulario' onSubmit={(e) => { e.preventDefault(); handleRegister(); }}>
-        <label>Nome completo</label>
-        <input 
-          type="text" 
-          placeholder="Nome completo"
-          value={nome}
-          onChange={(e) => setNome(e.target.value)}
-          required 
-        />
-        <label>CPF</label>
-        <input 
-          type="text" 
-          placeholder="CPF"
-          value={cpf}
-          onChange={(e) => setCpf(e.target.value)}
-          maxLength="11" 
-          required 
-        />
-        <label>Usuário</label>
-        <input 
-          type="text" 
-          placeholder="Usuário"
-          value={user}
-          onChange={(e) => setUser(e.target.value)}
-          required 
-        />
-        <label>Senha</label>
-        <input 
-          type="password" 
-          placeholder="Senha"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required 
-        />
-        <div className="buttons-container">
-          <button className='button' type="submit">Registrar</button>
+      <div className="register-container">
+      <div className="register-image">
+          <img src={RegisterImage} alt="Imagem de registro" />
         </div>
-        {error && <p className="error-message">{error}</p>}
-      </form>
+        <div className="formulario-container">
+          <h1>Cadastro</h1>
+          <form className="for-register" onSubmit={(e) => { e.preventDefault(); handleRegister(); }}>
+
+            <input
+              type="text"
+              placeholder="Nome completo"
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
+              required
+            />
+
+            <input
+              type="text"
+              placeholder="CPF"
+              value={cpf}
+              onChange={(e) => setCpf(e.target.value)}
+              maxLength="11"
+              required
+            />
+
+            <input
+              type="text"
+              placeholder="Usuário"
+              value={user}
+              onChange={(e) => setUser(e.target.value)}
+              required
+            />
+
+            <input
+              type="password"
+              placeholder="Senha"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <div className="buttons-container">
+              <button className="button" type="submit">Registrar</button>
+            </div>
+            {error && <p className="error-message">{error}</p>}
+          </form>
+        </div>
+      </div>
     </div>
+    </>
   );
 };
+
 
 export default Register;

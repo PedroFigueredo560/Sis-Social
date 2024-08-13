@@ -1,0 +1,12 @@
+.main-content-wrapper {
+    margin-left: 200px; 
+    padding: 10;
+  }
+  
+  @media (max-width: 768px) {
+    .main-content-wrapper {
+        margin-left: 0; 
+        padding-bottom: 60px; 
+        z-index: 500; 
+    }
+  }

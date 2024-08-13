@@ -5,8 +5,8 @@
     --secondary-border: #95ada2;
 
     /* Cores de Fundo e Texto */
-    --background: #edfded;
-    --background-card: #0000004d;
+    --background: #ffffff;
+    --background-card: #a2ada581;
     --background-card-hover: #538b5370;
     --text-primary: #4d4949;
     --background-secondary: #fdfdfd;
@@ -28,14 +28,14 @@
     box-sizing: border-box;
     outline: none;
     text-decoration: none;
-    text-transform: capitalize;
+    /* text-transform: capitalize; */
 }
 
 body {
     background-color: var(--background);
     color: var(--text-primary);
     overflow-x: hidden;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: "Inter", sans-serif !important;
 }
 
 html {
@@ -63,4 +63,8 @@ h1 {
 
 section{
     padding: 6rem;
+}
+
+.MuiBox-root .css-zxdg2z {
+    padding: 0;
 }

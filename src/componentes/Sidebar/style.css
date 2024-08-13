@@ -1,0 +1,32 @@
+.list {
+  width: 250px;
+}
+
+.list-item {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  text-align: right;
+  font-weight: 700;
+}
+
+.list-menu {
+  width: 100%;
+  text-align: right;
+}
+
+.text-item {
+  text-align: right;
+  width: 100%;
+  font-size: 1rem;
+  font-size: 1.2rem;
+  font-weight: 500 !important;
+  padding: 4px 0px;
+}
+
+
+.css-eq4gky-MuiButtonBase-root-MuiIconButton-root {
+  text-align: right;
+  color:rgb(165, 161, 161)  !important;
+}

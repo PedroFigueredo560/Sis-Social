@@ -1,5 +1,10 @@
- .LoggedAreaContainer {
-  max-width: 90rem;
-  margin: 0 auto;
-  padding: 1rem;
+.logged-area-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+main {
+  flex: 1;
+  min-height: 100vh;
 }

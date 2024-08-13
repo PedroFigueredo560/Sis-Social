@@ -1,76 +1,47 @@
-/* .register {
-    background-color: rgb(132, 175, 134);
-    width: 50%;
-    text-align: center;
-    padding-left: 5%;
-    padding-right: 5%;
-    padding-top: 3%;
-    padding-bottom: 3%;
-    border-radius: 25px;
-    margin-left: 340px;
-    margin-right: 300px;
-    margin-top: 100px;
-    margin-bottom: 100px;
+.login, .register {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
 }
 
-.register .content h1{
-    padding: 3%;
-    margin-bottom: 10px;
-    background-color: rgb(120, 150, 120);
-    border-radius: 10px;
-    margin-left: 90px;
-    margin-right: 90px;
-    font-size: 25px;
-}
-
-.register .content h2{
-    text-align: right;
-    margin-right: 10px;
-    font-size: 25px;
-}
-
-.register .content h2 input{
-    width: 60%;
-    height: 25px;
-    margin-bottom: 10px;
-    font-size: 15px;
-    border: 5px;
-    border-radius: 5px;
-}
-
-.register-button{
-    margin-right: 200px;
-    width: 25%;
-    height: 25px;
-    font-size: 20px;
-    border-radius: 10px;
-}
-
-.register-button:hover{
-    background-color: lightgray;
-}
-
-.register-button:active{
-    background-color: grey;
-} */
-
-
-/* style.css */
-.register {
-    min-height: 90vh;
-    padding-top: 2rem;
-}
-
-.formulario {
-    border-top: 8px solid var(--secondary);
+.register-container, .login-container {
+    display: flex;
+    width: 100%;
     background-color: #fff;
-    padding: 4rem;
     border-radius: 12px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    overflow: hidden;
+    flex-wrap: wrap; 
+}
+
+.formulario-container {
+    flex: 1;
+    padding: 8rem;
     display: flex;
     flex-direction: column;
-    margin: 4rem auto 4rem;
+    justify-content: center;
     max-width: 600px;
+    background-color: rgb(221, 236, 224);
+}
+
+.formulario-container h1 {
+    margin-bottom: 4rem;
+}
+
+.register-image, .login-image {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.register-image img, .login-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-left: 1px solid #ddd;
 }
 
 label {
@@ -81,7 +52,7 @@ label {
     letter-spacing: 1px;
     color: var(--secondary-color);
     margin-bottom: 0.5rem;
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 
 input,
@@ -94,79 +65,37 @@ textarea {
     font-size: 1.25rem;
     border: 0.0625rem solid var(--secondary);
     border-left-width: 0.5rem;
-    border-radius: 0.75rem 0.75rem;
+    border-radius: 0.75rem;
     transition: all 0.3s;
+    margin-bottom: 1rem;
 }
 
-input::placeholder,
-textarea::placeholder {
-    color: var(--secondary-color);
-    font-weight: 600;
-    opacity: 0.7;
-}
-
-input:focus,
-textarea:focus {
-    border-right-width: 8px;
-    border-color: var(--secondary-color);
+.buttons-container {
+    display: flex;
+    justify-content: center;
 }
 
 .button {
-    margin-top: 1.2rem;
-    width: 100%;
-    background-color: var(--secondary);
-    color: var(--background);
-    font-size: 1.5rem;
-    padding: 1rem 0;
-    border-radius: 12px;
-    font-weight: 600;
-    transition: all 0.3s;
+    background-color: #4caf50; 
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 0.75rem;
+    cursor: pointer;
 }
 
 .button:hover {
-    background-color: var(--secondary-color);
+    background-color: #45a049;
 }
 
-
-@media (max-width: 511px) {
-    form {
-        padding: 1rem;
+@media (max-width: 768px) {
+    .register-container, .login-container {
+        flex-direction: column;
     }
 
-    h2 {
-        font-size: 1.25rem;
+    .register-image, .login-image {
+        border-left: none;
+        border-top: 1px solid #ddd;
     }
-
-    label {
-        margin-top: 1rem;
-        font-size: 0.75rem;
-    }
-
-    input,
-    select,
-    textarea {
-        border-left-width: 0.25rem;
-        border-radius: 0.6rem 0.6rem;
-        padding: 0.5rem;
-        font-size: 1.2rem;
-    }
-
-    input:focus,
-    textarea:focus {
-        border-right-width: 0.25rem;
-    }
-    .register {
-        padding: 1rem;
-      }
-    
-      .register h1{
-        font-size: rem;
-      }
-    
-      .button {
-          margin-top: 1.2rem;
-          font-size: 1.1rem;
-          padding: .8rem 0;
-          border-radius: 8px;
-      }
 }

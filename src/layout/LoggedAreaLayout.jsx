@@ -1,15 +1,18 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
-import Footer from "../componentes/Footer/Index";
+import React from 'react';
+import { Outlet } from 'react-router-dom';
+import './style.css';
+import SidebarLogged from '../componentes/SidebarLogged/SidebarLogged';
 
 const LoggedAreaLayout = () => {
   return (
-    <div className="logged-area-layout">
-      <main>
+    <div style={{ display: 'flex' }}>
+      <SidebarLogged />
+      <div style={{ flexGrow: 1, padding: '20px' }}>
         <Outlet /> 
-      </main>
+      </div>
     </div>
   );
 };
 
 export default LoggedAreaLayout;
+

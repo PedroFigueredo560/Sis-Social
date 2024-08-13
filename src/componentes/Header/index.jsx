@@ -1,125 +1,210 @@
-import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
-import { AppBar, Toolbar, Typography, IconButton, Button } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import { useTheme } from "@mui/material/styles";
-import "./style.css";
-import { AuthContext } from "../../layout/AuthContext";
+// import React, { useState } from "react";
+// import { AppBar, Box, IconButton, Toolbar, Typography } from "@mui/material";
+// import MenuIcon from "@mui/icons-material/Menu";
+// import Sidebar from "../Sidebar";
+// import "./style.css";
+// import { Link, useNavigate } from "react-router-dom";
+// import { useTheme } from "@mui/material/styles";
 
-const Header = () => {
-  const [menuActive, setMenuActive] = useState(false);
-  const { token, logout } = useContext(AuthContext);
+
+
+// export default function Header() {
+//   const [open, setOpen] = useState(false);
+
+//   const toggleSidebar = () => {
+//     setOpen(!open);
+//   };
+
+//   const theme = useTheme();
+//   const navigate = useNavigate();
+
+//   return (
+//     <>
+//       <Box className="Box"
+//         sx={{
+//           flexGrow: 1,
+//           position: "sticky",
+//           top: 0,
+//           backgroundColor: "#333",
+//           color: theme.offwhite,
+//           zIndex: 999,
+//         }}
+//       >
+//         <AppBar position="static" color="transparent" elevation={0} className="appbar">
+//           <Toolbar>
+//             <Typography className="logo">
+//               <Link to="/" className="logo-link">
+//                 <img className="logo" src="src/assets/logo.png" alt="Logo_sis_social" />
+//               </Link>
+//             </Typography>
+//             <Typography
+//               display="flex"
+//               alignItems="center"
+//               variant="h6"
+//               component="div"
+//               sx={{ flexGrow: 1, color: "#fff", fontWeight: 700, cursor: "pointer" }}
+//               className="title"
+//               data-testid="linkLogoHeader"
+//               onClick={() => {
+//                 window.scrollTo({
+//                   top: 0,
+//                   behavior: "smooth",
+//                 });
+//               }}
+//             >
+
+//               {/* <Link to="/agendamentos" className="nav-link">
+//                         Agendamentos
+//                       </Link>
+//                     </Button>
+//                     <Button>
+//                       <Link to="/financeiro" className="nav-link">
+//                         Financeiro
+//                       </Link>
+//                     </Button>
+//                     <Button>
+//                       <Link to="/documentos" className="nav-link">
+//                         Modelos
+//                       </Link>
+//                     </Button>
+//                     <Button>
+//                       <Link to="/documentosBen" className="nav-link">
+//                         Documentos
+//                       </Link>
+//                     </Button>
+//                     <Button onClick={logout} className="nav-link">
+//                       Logout
+//                     </Button>
+//                   </>
+//                 ) : (
+//                   <>
+//                     <Button>
+//                       <Link to="/cadastro" className="nav-link">
+//                         Cadastro
+//                       </Link>
+//                     </Button>
+//                     <Button>
+//                       <Link to="/login" className="nav-link">
+//                         Login
+//                       </Link>
+//  */}
+
+
+//             </Typography>
+//             <span className="desktop">
+//               <Typography>
+//                 <a href="/" >Início</a>
+//               </Typography>
+//               <Typography>
+//                 <a href="#sobre" >Sobre</a>
+//               </Typography>
+//               <Typography>
+//                 <a href="#contato" >Contato</a>
+//               </Typography>
+//               <Typography>
+//                 <a href="#servicos" >Serviços</a>
+//               </Typography>
+//               <Typography>
+//                 <Link to="/login">Login</Link>
+//               </Typography>
+//               <Typography>
+//                 <Link to="/cadastro" className="button-cadastro">Cadastro</Link>
+//               </Typography>
+
+
+//             </span>
+
+//             <IconButton
+//               size="large"
+//               edge="start"
+//               color="inherit"
+//               aria-label="menu"
+//               sx={{ mr: -2, color: "white" }}
+//               onClick={toggleSidebar}
+//               className="mobile-links"
+//             >
+//               <MenuIcon />
+//             </IconButton>
+//           </Toolbar>
+//         </AppBar>
+//       </Box>
+//       <Sidebar open={open} toggleSidebar={toggleSidebar} />
+//     </>
+//   );
+// }
+
+
+import React, { useState } from 'react';
+import { AppBar, Box, IconButton, Toolbar, Typography } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import Sidebar from '../Sidebar';
+import { Link } from 'react-router-dom';
+import { useTheme } from '@mui/material/styles';
+import './style.css';
+
+export default function Header() {
+  const [open, setOpen] = useState(false);
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
-  const toggleMenu = () => {
-    setMenuActive(!menuActive);
+  const toggleSidebar = () => {
+    setOpen(!open);
   };
 
   return (
-    <AppBar position="static" className="header">
-      <Toolbar className="Toolbar">
-        <Typography className="logo">
-          <Link to="/" className="logo-link">
-            <img className="logo" src="src/assets/logo.png" alt="Logo_sis_social" />
-          </Link>
-        </Typography>
-        {isMobile ? (
-          <>
+    <>
+      <Box
+        className="Box"
+        sx={{
+          flexGrow: 1,
+          position: 'sticky',
+          top: 0,
+          backgroundColor: '#333',
+          color: theme.offwhite,
+          zIndex: 999,
+        }}
+      >
+        <AppBar position="static" color="transparent" elevation={0} className="appbar">
+          <Toolbar>
+            <Typography className="logo">
+              <Link to="/" className="logo-link">
+                <img className="logo" src="src/assets/logo.png" alt="Logo_sis_social" />
+              </Link>
+            </Typography>
+            <span className="desktop">
+              <Typography>
+                <a href="/">Início</a>
+              </Typography>
+              <Typography>
+                <a href="#sobre">Sobre</a>
+              </Typography>
+              <Typography>
+                <a href="#servicos">Serviços</a>
+              </Typography>
+              <Typography>
+                <a href="#contato">Contato</a>
+              </Typography>
+              <Typography>
+                <Link to="/login">Login</Link>
+              </Typography>
+              <Typography>
+                <Link to="/cadastro" className="button-cadastro">Cadastro</Link>
+              </Typography>
+            </span>
             <IconButton
+              size="large"
               edge="start"
               color="inherit"
               aria-label="menu"
-              onClick={toggleMenu}
-              id="menu-btn"
+              sx={{ mr: -2, color: 'white' }}
+              onClick={toggleSidebar}
+              className="mobile-links"
             >
               <MenuIcon />
             </IconButton>
-            <nav className={`navbar ${menuActive ? "active" : ""}`}>
-              <Link to="/" className="nav-link" onClick={toggleMenu}>
-                Início
-              </Link>
-              {token ? (
-                <>
-                  <Link to="/agendamentos" className="nav-link" onClick={toggleMenu}>
-                    Agendamentos
-                  </Link>
-                  <Link to="/financeiro" className="nav-link" onClick={toggleMenu}>
-                    Financeiro
-                  </Link>
-                  <Link to="/documentos" className="nav-link" onClick={toggleMenu}>
-                    Modelos
-                  </Link>
-                  <Link to="/documentosBen" className="nav-link" onClick={toggleMenu}>
-                    Documentos
-                  </Link>
-                  <Button onClick={() => { logout(); toggleMenu(); }} className="nav-link">
-                    Logout
-                  </Button>
-                </>
-              ) : (
-                <>
-                  <Link to="/cadastro" className="nav-link" onClick={toggleMenu}>
-                    Cadastro
-                  </Link>
-                  <Button onClick={logout} className="nav-link">
-                    Logout
-                  </Button>
-                </>
-              )}
-            </nav>
-          </>
-        ) : (
-          <div className="nav-buttons">
-            <Button>
-              <Link to="/" className="nav-link">
-                Início
-              </Link>
-            </Button>
-            {token ? (
-              <>
-                <Button>
-                  <Link to="/agendamentos" className="nav-link">
-                    Agendamentos
-                  </Link>
-                </Button>
-                <Button>
-                  <Link to="/financeiro" className="nav-link">
-                    Financeiro
-                  </Link>
-                </Button>
-                <Button>
-                  <Link to="/documentos" className="nav-link">
-                    Modelos
-                  </Link>
-                  <Link to="/documentosben" className="nav-link">
-                    Documentos
-                  </Link>
-                </Button>
-                <Button onClick={logout} className="nav-link">
-                  Logout
-                </Button>
-              </>
-            ) : (
-              <>
-                <Button>
-                  <Link to="/cadastro" className="nav-link">
-                    Cadastro
-                  </Link>
-                </Button>
-                <Button>
-                  <Link to="/login" className="nav-link">
-                    Login
-                  </Link>
-                </Button>
-              </>
-            )}
-          </div>
-        )}
-      </Toolbar>
-    </AppBar>
+          </Toolbar>
+        </AppBar>
+      </Box>
+      <Sidebar open={open} toggleSidebar={toggleSidebar} />
+    </>
   );
-};
-
-export default Header;
+}

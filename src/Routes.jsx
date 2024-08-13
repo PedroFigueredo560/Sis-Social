@@ -17,6 +17,7 @@ import Servicos from "./pages/Serviços";
 import EditServicos from "./pages/EditServicos";
 import RegistrarServicos from "./pages/RegistrarServicos";
 import DocumentosBen from "./pages/DocumentosBen";
+import DetalheBeneficiario from "./pages/DetalheBeneficiário";
 
 const AppRoutes = () => {
   return (
@@ -40,8 +41,8 @@ const AppRoutes = () => {
       <Route path="/edit_beneficiario/:cpf" element={<EditBeneficiarios />} />
       <Route path="/servicos" element={<Servicos />} />
       <Route path="/edit_servicos/:nome" element={<EditServicos />} />
-      <Route path="registrar_servicos" element={<RegistrarServicos/>}/>
-      
+      <Route path="/registrar_servicos" element={<RegistrarServicos/>}/>
+      <Route path="/detalhe_beneficiario/:cpf" element={<DetalheBeneficiario/>}/>
     </Routes>
 
   );

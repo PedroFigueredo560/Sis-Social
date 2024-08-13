@@ -33,6 +33,10 @@ function Beneficiarios() {
     setEditBeneficiariosCpf(beneficiariosCpf); // Set the clicked cpf for editing
     navigate(`/edit_beneficiario/${beneficiariosCpf}`);
   };
+  
+  const handleDetalheBeneficiario = (beneficiarioCpf) => {
+    navigate(`/detalhe_beneficiario/${beneficiarioCpf}`);
+  };
 
   const handleDeleteBeneficiarios = async (beneficiariosCpf) => {
     if (window.confirm('Are you sure you want to delete this beneficiarios?')) {
@@ -85,6 +89,7 @@ function Beneficiarios() {
                     <td>
                       <button onClick={() => handleEditBeneficiarios(beneficiarios.cpf)}>Editar</button>
                       <button onClick={() => handleDeleteBeneficiarios(beneficiarios.cpf)}>Excluir</button>
+                      <button onClick={() => handleDetalheBeneficiario(beneficiarios.cpf)}>Expandir</button>
                     </td>
                   </tr>
                 ))}

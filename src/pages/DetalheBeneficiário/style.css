@@ -1,0 +1,17 @@
+.beneficiario {
+    min-height: 90vh;
+    padding-top: 2rem;
+}
+
+.info_pessoal {
+    position: relative;
+    font-size: 22px;
+    margin-left: 50px;
+    padding: 5px;
+    left: 0;
+    top: 0;
+    height: 300px;
+    width: 300px;
+    background-color: lightgray;
+    border-radius: 15px;
+}

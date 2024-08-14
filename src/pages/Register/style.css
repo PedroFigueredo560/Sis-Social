@@ -65,7 +65,7 @@ textarea {
     font-size: 1.25rem;
     border: 0.0625rem solid var(--secondary);
     border-left-width: 0.5rem;
-    border-radius: 0.75rem;
+    border-radius: 0.45rem;
     transition: all 0.3s;
     margin-bottom: 1rem;
 }

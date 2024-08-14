@@ -37,7 +37,7 @@ const SidebarLogged = () => {
       </List>
       <div className="logout-container">
         <button className="logout-button" onClick={logout}>
-          Logout
+          Sair
         </button>
       </div>
     </div>

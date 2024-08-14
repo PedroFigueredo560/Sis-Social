@@ -70,7 +70,7 @@ const AppRoutes = () => {
       <Route path="/edit_servicos/:nome" element={<EditServicos />} />
       <Route path="/registrar_servicos" element={<RegistrarServicos/>}/>
       <Route path="/cadastro_atendimento" element={<CadastroAtendimento/>}/>
-      <Route path="/detalhe_beneficiário/:cpf" element={<DetalheBeneficiario/>}/>
+      <Route path="/detalhe_beneficiario/:cpf" element={<DetalheBeneficiario/>}/>
       
     </Routes>
   );

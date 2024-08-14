@@ -5,7 +5,7 @@ import Appointments from "./pages/agendamentos";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Financial from "./pages/Financial";
-import { PrivateArea } from "./layout/PrivateArea";
+import PrivateArea from './layout/PrivateArea';
 import LoggedAreaLayout from "./layout/LoggedAreaLayout";
 import Funcionarios from "./pages/Funcionarios";
 import EditFuncionarios from "./pages/EditFuncionarios";
@@ -18,6 +18,8 @@ import EditServicos from "./pages/EditServicos";
 import RegistrarServicos from "./pages/RegistrarServicos";
 import DocumentosBen from "./pages/DocumentosBen";
 import DetalheBeneficiario from "./pages/DetalheBeneficiário";
+import BeneficiarioDashboard from './pages/Dashboards/beneficiario';
+import FuncionarioDashboard from './pages/Dashboards/funcionario';
 
 const AppRoutes = () => {
   return (

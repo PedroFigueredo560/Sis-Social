@@ -30,7 +30,7 @@ const Register = () => {
       nascimento: nascimento,
       telefone: telefone,
       endereco: endereco,
-      services: 'Solicitante',
+      servicos: 'Solicitante',
       user_ben: user,
       password_ben: password,
     };

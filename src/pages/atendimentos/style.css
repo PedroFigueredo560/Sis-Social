@@ -1,0 +1,44 @@
+/* Box for registering new atendimento */
+.register-box {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.register-box button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+}
+
+.register-box p {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Box for the report button */
+.report-box {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.report-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #28a745;
+    color: white;
+    font-size: 16px;
+}
+.atendimentos{
+    font-size: 13.4px;
+}

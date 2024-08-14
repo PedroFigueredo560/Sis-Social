@@ -51,16 +51,17 @@ const Login = () => {
           <div className="formulario-container">
             <h1>Login</h1>
             <form className="for-register" onSubmit={handleSubmit}>
-              <label>Usuário</label>
               <input
                 type="text"
+                placeholder="Nome de usuário"
                 value={user}
                 onChange={(e) => setUser(e.target.value)}
                 required
               />
-              <label>Senha</label>
+ 
               <input
                 type="password"
+                placeholder="Senha"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required

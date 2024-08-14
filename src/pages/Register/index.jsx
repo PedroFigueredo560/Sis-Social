@@ -9,6 +9,9 @@ import Header from '../../componentes/Header';
 const Register = () => {
   const [nome, setNome] = useState('');
   const [cpf, setCpf] = useState('');
+  const [nascimento, setNascimento] = useState('');
+  const [telefone, setTelefone] = useState('');
+  const [endereco, setEndereco] = useState('');
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
@@ -24,6 +27,9 @@ const Register = () => {
     const data = {
       name_ben: nome,
       cpf: cpf,
+      nascimento: nascimento,
+      telefone: telefone,
+      endereco: endereco,
       services: 'Solicitante',
       user_ben: user,
       password_ben: password,
@@ -91,6 +97,31 @@ const Register = () => {
               value={cpf}
               onChange={(e) => setCpf(e.target.value)}
               maxLength="11"
+              required
+            />
+
+            <input
+              type="date"
+              placeholder="Data de Nascimento"
+              value={nascimento}
+              onChange={(e) => setNascimento(e.target.value)}
+              required
+            />
+
+            <input
+              type="text"
+              placeholder="Telefone"
+              value={telefone}
+              onChange={(e) => setTelefone(e.target.value)}
+              maxLength="11"
+            />
+
+            <input
+              type="text"
+              placeholder="Endereço"
+              value={endereco}
+              onChange={(e) => setEndereco(e.target.value)}
+              maxLength="50"
               required
             />
 

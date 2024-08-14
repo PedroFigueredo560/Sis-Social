@@ -10,6 +10,8 @@ const EditBeneficiarios = () => {
   const [error, setError] = useState('');
   const [nome, setNome] = useState('');
   const { cpf } = useParams();
+  const [telefone, setTelefone] = useState('');
+  const [endereco, setEndereco] = useState('');
   const [service, setService] = useState('');
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
@@ -93,6 +95,22 @@ const EditBeneficiarios = () => {
           placeholder={beneficiarios.nome_ben}
           value={nome}
           onChange={(e) => setNome(e.target.value)}
+          required 
+        />
+        <label>telefone</label>
+        <input 
+          type='text'
+          placeholder={beneficiarios.telefone}
+          value={telefone}
+          onChange={(e) => setTelefone(e.target.value)}
+          required 
+        />
+        <label>Endereço</label>
+        <input 
+          type='text'
+          placeholder={beneficiarios.endereco}
+          value={endereco}
+          onChange={(e) => setEndereco(e.target.value)}
           required 
         />
         <label>CPF</label>

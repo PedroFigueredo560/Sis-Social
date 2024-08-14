@@ -85,7 +85,7 @@ function Beneficiarios() {
                   <tr key={beneficiarios.cpf}>
                     <td>{beneficiarios.name_ben}</td>
                     <td>{beneficiarios.cpf}</td>
-                    <td>{beneficiarios.services}</td>
+                    <td>{beneficiarios.servicos}</td>
                     <td>
                       <button onClick={() => handleEditBeneficiarios(beneficiarios.cpf)}>Editar</button>
                       <button onClick={() => handleDeleteBeneficiarios(beneficiarios.cpf)}>Excluir</button>

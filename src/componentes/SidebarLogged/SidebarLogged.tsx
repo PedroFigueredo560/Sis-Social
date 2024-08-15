@@ -51,6 +51,7 @@ const getMenuItemsByRole = (role) => {
         { text: 'Dashboard', link: '/funcionario-dashboard', icon: <Dashboard /> },
         { text: 'Funcionários', link: '/funcionarios', icon: <People /> },
         { text: 'Beneficiários', link: '/beneficiarios', icon: <Assignment /> },
+        { text: 'Atendimentos', link: '/beneficiario-dashboard/atendimentos', icon: <Assignment /> },
         { text: 'Serviços', link: '/servicos', icon: <Settings /> },
         { text: 'Financeiro', link: '/financeiro', icon: <AttachMoney /> },
         { text: 'Documentos', link: '/documentos', icon: <DocumentScanner /> }
@@ -59,7 +60,6 @@ const getMenuItemsByRole = (role) => {
       return [
         { text: 'Dashboard', link: '/beneficiario-dashboard', icon: <Dashboard /> },
         { text: 'Agendamentos', link: '/beneficiario-dashboard/agendamentos', icon: <Assignment /> },
-        { text: 'Atendimentos', link: '/beneficiario-dashboard/atendimentos', icon: <Assignment /> },
         { text: 'Serviços', link: '/beneficiario-dashboard/servicos', icon: <Settings /> },
         { text: 'Documentos', link: '/beneficiario-dashboard/documentos', icon: <DocumentScanner /> }
       ];

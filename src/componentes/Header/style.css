@@ -6,7 +6,7 @@
   max-width: 12%; 
 }
 
-.Box{
+.Box {
   background-color: #f9fdf8 !important;
 }
 
@@ -23,7 +23,33 @@ a {
   font-size: 1.2rem;
   color: #030c04a6;
   font-weight: 700;
+  position: relative;
+  display: inline-block;
+  transition: color 0.3s ease;
 }
+
+a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -3px;
+  left: 0;
+  background-color: var(--secondary);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+a:hover {
+  color: var(--secondary);
+}
+
+/* a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+} */
+
 .desktop .button-cadastro {
   background-color: var(--secondary);
   color: #fff;
@@ -35,7 +61,7 @@ a {
 }
 
 .desktop .button-cadastro:hover {
- opacity: 0.8;
+  opacity: 0.8;
 }
 
 .title {

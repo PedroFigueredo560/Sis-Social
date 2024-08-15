@@ -1,5 +1,7 @@
 import React from "react";
-import { Box } from "@mui/material";
+import { Box, IconButton, Badge } from "@mui/material";
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import SidebarLogged from "../../componentes/SidebarLogged/SidebarLogged";
 import { Outlet } from "react-router-dom";
 import "./style.css";
@@ -9,8 +11,17 @@ const FuncionarioDashboard = () => {
   return (
     <Box sx={{ display: "flex" }}>
       <SidebarLogged />
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        {/* <h1>Dashboard Funcionario</h1> */}
+      <Box component="main" sx={{ flexGrow: 1, p: 3, position: "relative" }}>
+        <div className="icons">
+          <IconButton aria-label="show notifications">
+            <Badge badgeContent={2} sx={{ "& .MuiBadge-badge": { backgroundColor: "#e67f7b" } }}>
+              <NotificationsIcon sx={{ fontSize: 32 }} />
+            </Badge>
+          </IconButton>
+          <IconButton edge="end" aria-label="account of current user">
+            <AccountCircleIcon sx={{ fontSize: 40 }} />
+          </IconButton>
+        </div>
         <MainContentWrapper>
           <Outlet />
         </MainContentWrapper>
@@ -20,4 +31,3 @@ const FuncionarioDashboard = () => {
 };
 
 export default FuncionarioDashboard;
-

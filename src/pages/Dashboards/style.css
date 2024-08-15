@@ -29,16 +29,16 @@
   .logout-button {
     margin-top: 20px;
     padding: 10px;
-    background-color: #e74c3c;
+    /* background-color: #e74c3c; */
     color: #fff;
     border: none;
     cursor: pointer;
     border-radius: 5px;
   }
   
-  .logout-button:hover {
+  /* .logout-button:hover {
     background-color: #c0392b;
-  }
+  } */
   
   .content {
     flex: 1;
@@ -52,5 +52,22 @@
   
   .welcome {
     margin-top: 20px;
+  }
+  
+  .icons {
+    position: absolute;
+    top: 8px; 
+    right: 12px; 
+    display: flex;
+    align-items: center;
+    gap: 16px; 
+  }
+  
+  @media (max-width: 768px) {
+    .icons {
+      top: 4px;
+      right: 8px;
+      gap: 8px;
+    }
   }
   

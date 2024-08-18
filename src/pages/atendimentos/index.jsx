@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
-import './style.css'; // Import your CSS file for styling
+import './style.css'; 
 
 function Atendimentos() {
   const [atendimentos, setAtendimentos] = useState([]);

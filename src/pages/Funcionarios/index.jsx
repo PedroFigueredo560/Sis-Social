@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './style.css'; // Import your CSS file for styling
+import { IconButton, Tooltip } from '@mui/material';
+import { Edit as EditIcon, Delete as DeleteIcon } from '@mui/icons-material';
+import './style.css'; 
+import { ToastContainer } from 'react-toastify';
+import FormTemplate from '../../componentes/formTemplate';
 
 function Funcionarios() {
   const [funcionarios, setFuncionarios] = useState([]);
   const [error, setError] = useState(null);
-  const [editFuncionarioCpf, setEditFuncionarioCpf] = useState(null);
-  const [editFuncionarioData, setEditFuncionarioData] = useState({ name: '', cpf: '', jobTitle: '' });
   const navigate = useNavigate();
   
-
   useEffect(() => {
     const fetchFuncionarios = async () => {
       try {
-        const response = await fetch('http://localhost:5000/get_func'); // Use fetch for wider browser compatibility
+        const response = await fetch('http://localhost:5000/get_func');
         const data = await response.json();
         setFuncionarios(data);
       } catch (error) {
@@ -25,76 +26,87 @@ function Funcionarios() {
     fetchFuncionarios();
   }, []);
 
-  const handleRegisterFuncionario = async () => {
+  const handleRegisterFuncionario = () => {
     navigate("/registrar_funcionario");
   };
 
   const handleEditFuncionario = (funcionarioCpf) => {
-    setEditFuncionarioCpf(funcionarioCpf); // Set the clicked cpf for editing
     navigate(`/edit_funcionario/${funcionarioCpf}`);
   };
 
   const handleDeleteFuncionario = async (funcionarioCpf) => {
-    if (window.confirm('Are you sure you want to delete this funcionario?')) {
-      const data = funcionarioCpf;
+    if (window.confirm('Tem certeza que deseja deletar este funcionário?')) {
       try {
         const response = await fetch('http://localhost:5000/delete_funcionario', {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(data),
+          body: JSON.stringify({ cpf: funcionarioCpf }),
         });
         if (response.ok) {
-          const updatedFuncionarios = funcionarios.filter((funcionario) => funcionario.cpf !== funcionarioCpf);
-          setFuncionarios(updatedFuncionarios);
+          setFuncionarios((prev) => prev.filter((funcionario) => funcionario.cpf !== funcionarioCpf));
         } else {
-          throw new Error('Failed to delete funcionario.');
+          throw new Error('Falha ao deletar o funcionário.');
         }
       } catch (error) {
         console.error('Erro ao deletar funcionário:', error);
-        setError(error.message || 'Ocorreu um erro ao tentar deletar o funcionario.');
+        setError(error.message || 'Ocorreu um erro ao tentar deletar o funcionário.');
       }
     }
   };
 
   return (
-    <div className="funcionarios">
-      <div className="content">
-        <h1>Funcionários</h1>
-        <h2>
-          <button onClick={handleRegisterFuncionario}>Registrar</button>
-          {error ? (
-            <p className="error-message">{error}</p>
-          ) : (
-            <table>
-              <thead>
-                <tr>
-                  <th>Nome</th>
-                  <th>CPF</th>
-                  <th>Cargo</th>
-                  <th>Ações</th>
-                </tr>
-              </thead>
-              <tbody>
-                {funcionarios.map((funcionario) => (
-                  <tr key={funcionario.cpf}>
-                    <td>{funcionario.name_func}</td>
-                    <td>{funcionario.cpf}</td>
-                    <td>{funcionario.job}</td>
-                    <td>
-                      <button onClick={() => handleEditFuncionario(funcionario.cpf)}>Editar</button>
-                      <button onClick={() => handleDeleteFuncionario(funcionario.cpf)}>Excluir</button>
-                    </td>
+    <>
+      <ToastContainer />
+      <FormTemplate isForm={false}>
+          <h1>Funcionários</h1>
+          <section className="container">
+          <div className="table-container">
+            <div className="table-header">
+              <div className="table-actions">
+                <button onClick={handleRegisterFuncionario}>Novo Funcionário</button>
+              </div>
+            </div>
+            {error ? (
+              <p className="error-message">{error}</p>
+            ) : (
+              <table>
+                <thead>
+                  <tr>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Cargo</th>
+                    <th>Ações</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          )}
-        </h2>
-      </div>
-    </div>
-  )
-};
-
+                </thead>
+                <tbody>
+                  {funcionarios.map((funcionario) => (
+                    <tr key={funcionario.cpf}>
+                      <td>{funcionario.name_func}</td>
+                      <td>{funcionario.cpf}</td>
+                      <td>{funcionario.job}</td>
+                      <td>
+                        <Tooltip title="Editar">
+                          <IconButton onClick={() => handleEditFuncionario(funcionario.cpf)} color="primary">
+                            <EditIcon />
+                          </IconButton>
+                        </Tooltip>
+                        <Tooltip title="Excluir">
+                          <IconButton onClick={() => handleDeleteFuncionario(funcionario.cpf)} color="error">
+                            <DeleteIcon />
+                          </IconButton>
+                        </Tooltip>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
+          </div>
+        </section>
+      </FormTemplate>
+    </>
+  );
+}  
 export default Funcionarios;

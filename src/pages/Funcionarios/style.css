@@ -1,77 +1,85 @@
-/* Global styles */
-body {
-    font-family: sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* Funcionarios container */
-  .funcionarios {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #f5f5f5;
-  }
-  
-  /* Content section */
-  .content {
-    width: 80%;
-    max-width: 1000px;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Title */
-  h1 {
-    font-size: 24px;
-    margin-bottom: 15px;
-  }
-  
-  /* Table container */
+
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* min-height: 90vh; */
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.table-container {
+  width: 80%;
+  max-width: 100%;
+  margin-top: 1rem;
+  overflow-x: auto;
+  box-sizing: border-box;
+  font-size: 1.4rem;
+}
+
+.table-header {
+  display: flex;
+  justify-content: flex-end; 
+  align-items: center;
+  position: relative;
+}
+
+.table-actions {
+  position: relative; 
+  margin-bottom: 1rem;;
+}
+
+.table-actions button {
+  font-weight: 400;
+  padding: 0.6rem 1rem;
+  background-color: var(--secondary);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  margin-top: 2rem;
+  color: var(--background-secondary);
+}
+
+.table-actions button:hover {
+  opacity: 0.9;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  font-size: 1.2rem; 
+  word-wrap: break-word;
+}
+
+th {
+  background-color: #e7f7e4;
+  border-bottom: 1px solid #ddd;
+}
+
+td {
+  border-bottom: 1px solid #ddd;
+}
+
+
+@media (max-width: 768px) {
   table {
-    width: 100%;
-    border-collapse: collapse;
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
   }
-  
-  /* Table header */
-  th {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+
+  th, td {
+    padding: 10px 5px;
+    font-size: 0.85rem;
   }
-  
-  /* Table body */
-  td {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  /* Table actions */
-  .actions {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  /* Action buttons */
-  button {
-    padding: 5px 10px;
-    border: 1px solid #ddd;
-    border-radius: 3px;
-    cursor: pointer;
-    background-color: #eee;
-    margin: 0 5px;
-  }
-  
-  .error-message {
-    color: red;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  /* Edit Popup (optional styles) */
-  /*.edit-popup {
-    /* Styles for the edit popup modal window */
-  /*}
+}
+
+

@@ -49,12 +49,12 @@ const getMenuItemsByRole = (role) => {
     case 'funcionario':
       return [
         { text: 'Dashboard', link: '/funcionario-dashboard', icon: <Dashboard /> },
-        { text: 'Funcionários', link: '/funcionarios', icon: <People /> },
-        { text: 'Beneficiários', link: '/beneficiarios', icon: <Assignment /> },
-        { text: 'Atendimentos', link: '/beneficiario-dashboard/atendimentos', icon: <Assignment /> },
-        { text: 'Serviços', link: '/servicos', icon: <Settings /> },
-        { text: 'Financeiro', link: '/financeiro', icon: <AttachMoney /> },
-        { text: 'Documentos', link: '/documentos', icon: <DocumentScanner /> }
+        { text: 'Funcionários', link: '/funcionario-dashboard/funcionarios', icon: <People /> },
+        { text: 'Beneficiários', link: '/funcionario-dashboard/beneficiarios', icon: <Assignment /> },
+        { text: 'Atendimentos', link: '/funcionario-dashboard/atendimentos', icon: <Assignment /> },
+        { text: 'Serviços', link: '/funcionario-dashboard/servicos', icon: <Settings /> },
+        { text: 'Financeiro', link: '/funcionario-dashboard/financeiro', icon: <AttachMoney /> },
+        { text: 'Documentos', link: '/funcionario-dashboard/documentos', icon: <DocumentScanner /> }
       ];
     case 'beneficiario':
       return [

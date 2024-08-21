@@ -20,11 +20,12 @@ export default function Header() {
         className="Box"
         sx={{
           flexGrow: 1,
-          position: 'sticky',
+          position: 'fixed', 
           top: 0,
+          width: '100%',
           backgroundColor: '#333',
-          color: theme.offwhite,
-          zIndex: 999,
+          color: theme.palette.common.white, 
+          zIndex: 9999, 
         }}
       >
         <AppBar position="static" color="transparent" elevation={0} className="appbar">

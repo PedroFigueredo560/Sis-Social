@@ -23,7 +23,7 @@ const EditFuncionario = () => {
         }
         const data = await res.json();
         setFuncionario(data);
-        setNome(data.name_func);
+        setNome(data.nome_func);
         setJob(data.job);
         setUser(data.user_func);
         setPassword(data.password_func);
@@ -84,7 +84,7 @@ const EditFuncionario = () => {
         <label>Nome completo</label>
         <input 
           type='text'
-          placeholder={funcionario.name_func}
+          placeholder={funcionario.nome_func}
           value={nome}
           onChange={(e) => setNome(e.target.value)}
           required 

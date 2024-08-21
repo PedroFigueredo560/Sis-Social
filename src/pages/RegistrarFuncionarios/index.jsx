@@ -79,7 +79,7 @@ const RegistrarFuncionarios = () => {
           placeholder="CPF (11 dígitos)"
           value={cpf}
           onChange={(e) => setCpf(e.target.value)}
-          maxLength="14"
+          maxLength="11"
           required 
         />
         <label>Função</label>

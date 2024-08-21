@@ -26,6 +26,11 @@ const EditBeneficiarios = () => {
         }
         const data = await res.json();
         setBeneficiarios(data)
+        setNome(data.nome_ben)
+        setTelefone(data.telefone)
+        setEndereco(data.endereco)
+        setUser(data.user_ben)
+        setPassword(data.password_ben)
       } catch (err) {
         setError(err.message);
       }
@@ -35,18 +40,20 @@ const EditBeneficiarios = () => {
   }, [cpf]);
 
   const handleEdit = async () => {
-    if (cpf.length !== 14) {
+    if (cpf.length !== 11) {
       setError('CPF inválido.');
       toast.error('CPF inválido.');
       return;
     }
 
     const data = {
-      'nome_ben': nome,
-      'cpf': cpf,
-      'services': service,
-      'user_ben': user,
-      'password_ben': password
+      nome_ben: nome,
+      cpf: cpf,
+      telefone: telefone,
+      endereco: endereco,
+      servicos: service,
+      user_ben: user,
+      password_ben: password
     }
 
     try {
@@ -95,7 +102,7 @@ const EditBeneficiarios = () => {
           placeholder={beneficiarios.nome_ben}
           value={nome}
           onChange={(e) => setNome(e.target.value)}
-          required 
+          required
         />
         <label>telefone</label>
         <input 
@@ -103,7 +110,8 @@ const EditBeneficiarios = () => {
           placeholder={beneficiarios.telefone}
           value={telefone}
           onChange={(e) => setTelefone(e.target.value)}
-          required 
+          maxLength='11'
+          required
         />
         <label>Endereço</label>
         <input 
@@ -111,13 +119,13 @@ const EditBeneficiarios = () => {
           placeholder={beneficiarios.endereco}
           value={endereco}
           onChange={(e) => setEndereco(e.target.value)}
-          required 
+          required
         />
         <label>CPF</label>
         {beneficiarios.cpf && <p>{beneficiarios.cpf}</p>} {}
         <label>Serviço</label>
         <select value={service} onChange={(e) => setService(e.target.value)}>
-          <option value="Beneficiario">Beneficiário</option>
+          <option value="Beneficiário">Beneficiário</option>
           <option value="Solicitante">Solicitante</option>
         </select>
         <label>Usuário</label>
@@ -126,7 +134,7 @@ const EditBeneficiarios = () => {
           placeholder={beneficiarios.user_ben}
           value={user}
           onChange={(e) => setUser(e.target.value)}
-          required 
+          required
         />
         <label>Senha</label>
         <input 
@@ -134,7 +142,7 @@ const EditBeneficiarios = () => {
           placeholder={beneficiarios.password_ben}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          required 
+          required
         />
         <div className="buttons-container">
           <button className='button' type="submit">Alterar</button>

@@ -53,7 +53,7 @@ const Register = () => {
       } else {
         toast.success('Usuário registrado com sucesso!', { autoClose: 3000 });
         setTimeout(() => {
-          navigate('/login');
+          navigate(-1);
         }, 3000);
       }
     } catch (err) {

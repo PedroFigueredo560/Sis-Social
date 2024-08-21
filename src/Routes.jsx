@@ -20,6 +20,7 @@ import EditServicos from "./pages/EditServicos";
 import RegistrarServicos from "./pages/RegistrarServicos";
 import CadastroAtendimento from "./pages/CadastroAtendimento";
 import DocumentosBen from "./pages/DocumentosBen";
+import DocumentosBenFunc from "./pages/DocumentosBenFunc";
 import DetalheBeneficiario from "./pages/DetalheBeneficiário";
 import BeneficiarioDashboard from './pages/Dashboards/beneficiario';
 import FuncionarioDashboard from './pages/Dashboards/funcionario';
@@ -40,7 +41,7 @@ const AppRoutes = () => {
             <Route path="servicos" element={<Servicos />} />
             <Route path="edit_beneficiario/:cpf" element={<EditBeneficiarios />} />
             <Route path="edit_Atendimento/:id" element={<EditAtendimento />} />
-            
+            <Route path="documentosben" element={<DocumentosBen />} />
           </Route>
 
           <Route path="/funcionario-dashboard" element={<FuncionarioDashboard />}>
@@ -55,7 +56,7 @@ const AppRoutes = () => {
             <Route path="registrar_funcionario" element={<RegistrarFuncionarios />} />
             <Route path="registrar_servicos" element={<RegistrarServicos />} />
             <Route path="edit_servicos/:nome" element={<EditServicos />} />
-            <Route path="documentosben" element={<DocumentosBen />} />
+            <Route path="documentosbenFunc" element={<DocumentosBenFunc />} />
           </Route>
         </Route>
       </Route>

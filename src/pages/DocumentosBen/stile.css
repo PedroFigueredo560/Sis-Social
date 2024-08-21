@@ -1,0 +1,128 @@
+.file-upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.upload-section {
+  display: flex;
+  align-items: center; /* Alinha os inputs e botões na mesma linha */
+  gap: 10px; /* Espaço entre os elementos */
+  margin-bottom: 20px;
+  margin-top: 30px;
+}
+
+.upload-section input[type="text"] {
+  width: 200px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.upload-section input[type="file"] {
+  padding: 10px;
+  font-size: 16px;
+}
+
+.upload-section button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: var(--secondary);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.upload-section button:hover {
+  background-color: #333;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.search-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-section input[type="text"] {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.search-section button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: var(--secondary);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-section button:hover {
+  background-color: #333;
+}
+
+.uploaded-files {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.cpf-section {
+  margin-bottom: 40px;
+}
+
+.cpf-section h3 {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.two-column-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pdf-box {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  margin: 10px;
+  background-color: var(--secondary);
+  text-align: center;
+  cursor: pointer;
+  width: calc(50% - 20px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pdf-box:hover {
+  background-color: #e1e1e1;
+  transform: scale(1.02);
+}
+
+#inp {
+  width: 400px;
+}

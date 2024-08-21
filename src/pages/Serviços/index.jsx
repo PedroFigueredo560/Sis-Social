@@ -59,7 +59,7 @@ function Servicos() {
   return (
     <div className="servicos">
       <div className="content">
-        <h1>Funcionários</h1>
+        <h1>Serviços</h1>
         <h2>
           <button onClick={handleRegisterServicos}>Registrar</button>
           {error ? (

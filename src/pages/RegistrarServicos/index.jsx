@@ -14,12 +14,6 @@ const RegistrarServicos= () => {
     const navigate = useNavigate();
 
   const handleRegister = async () => {
-    if (cpf.length !== 14) {
-      setError('CPF inválido.');
-      toast.error('CPF inválido.');
-      return;
-    }
-
     const data = {
       'nome_servicos': nome,
       'criterios': criterios,
@@ -39,9 +33,6 @@ const RegistrarServicos= () => {
 
       if (!res.ok) {
         const response = await res.json();
-        if (response.error.includes('value too long for type character varying(11)')) {
-          throw new Error('CPF inválido.');
-        }
         throw new Error(response.error || 'Erro ao registrar');
       } else {
         toast.success('Serviço registrado com sucesso!', { autoClose: 3000 });

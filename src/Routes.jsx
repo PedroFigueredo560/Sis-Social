@@ -24,6 +24,7 @@ import DocumentosBenFunc from "./pages/DocumentosBenFunc";
 import DetalheBeneficiario from "./pages/DetalheBeneficiário";
 import BeneficiarioDashboard from './pages/Dashboards/beneficiario';
 import FuncionarioDashboard from './pages/Dashboards/funcionario';
+import Chat from './pages/Chat';
 
 const AppRoutes = () => {
   return (
@@ -42,6 +43,7 @@ const AppRoutes = () => {
             <Route path="edit_beneficiario/:cpf" element={<EditBeneficiarios />} />
             <Route path="edit_Atendimento/:id" element={<EditAtendimento />} />
             <Route path="documentosben" element={<DocumentosBen />} />
+            <Route path="chat" element={<Chat />} />            
           </Route>
 
           <Route path="/funcionario-dashboard" element={<FuncionarioDashboard />}>
@@ -57,6 +59,7 @@ const AppRoutes = () => {
             <Route path="registrar_servicos" element={<RegistrarServicos />} />
             <Route path="edit_servicos/:nome" element={<EditServicos />} />
             <Route path="documentosbenFunc" element={<DocumentosBenFunc />} />
+            <Route path="chat" element={<Chat />} />    
           </Route>
         </Route>
       </Route>
@@ -66,7 +69,7 @@ const AppRoutes = () => {
       <Route path="/beneficiarios" element={<Beneficiarios />} />
       <Route path="/edit_beneficiario/:cpf" element={<EditBeneficiarios />} />
       <Route path="/edit_atendimento/:id" element={<EditAtendimento />} />
-    
+      <Route path="chat" element={<Chat />} />    
       <Route path="/servicos" element={<Servicos />} />
       <Route path="/edit_servicos/:nome" element={<EditServicos />} />
       <Route path="/registrar_servicos" element={<RegistrarServicos/>}/>

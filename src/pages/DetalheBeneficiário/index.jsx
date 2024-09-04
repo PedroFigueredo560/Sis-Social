@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { toast, ToastContainer } from 'react-toastify';   
+import { toast, ToastContainer } from 'react-toastify'; 
+import axios from 'axios';  
 
 import 'react-toastify/dist/ReactToastify.css';
 import './style.css';
@@ -10,6 +11,7 @@ const DetalheBeneficiario = () => {
   const [idade, setIdade] = useState();
   const nasc = new Date(beneficiario.nascimento);
   const date = `${nasc.getDate() + 1}/${nasc.getMonth()+1}/${nasc.getFullYear()}`;
+  const [uploadedFiles, setUploadedFiles] = useState({});
   const { cpf } = useParams();
   const navigate = useNavigate();
 
@@ -44,8 +46,32 @@ const DetalheBeneficiario = () => {
       setIdade(idade);
     }
 
+    const fetchUploadedFiles = async () => {
+      try {
+        const res = await fetch(`http://127.0.0.1:5000/uploaded_files_by_cpf/${cpf}`, {method: 'GET'});
+        if (res.ok) {
+          const data = await res.json();
+          setUploadedFiles(data);
+        } else {
+          console.error('Error fetching files:', res.data.error);
+        }
+      } catch (error) {
+        console.error('Error fetching files:', error);
+      }
+    };
+
+    fetchUploadedFiles();
     calculoIdade();
   })
+
+  const handleDownload = (cpf, fileName) => {
+    const downloadUrl = `http://localhost:5000/download/${cpf}/${fileName}`;
+    window.location.href = downloadUrl;
+  };
+
+  const handleDocument = (cpf) => {
+    
+  }
 
   return (
     <div className="beneficiario">
@@ -63,7 +89,18 @@ const DetalheBeneficiario = () => {
 
       <div className = 'documentos'>
         <h1>Documentos</h1>
-
+        {uploadedFiles[cpf]?.map((file) => (
+          <div key={file.name} className="document-box">
+            <span className="document-name">{file.name}</span>
+            <a
+              href="#"
+              onClick={() => handleDownload(cpf, file.name)}
+              className="download-button"
+            >
+              Baixar
+            </a>
+          </div>
+        ))}
       </div>
       
     </div>

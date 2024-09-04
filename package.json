@@ -17,7 +17,7 @@
     "@mui/icons-material": "^5.16.7",
     "@mui/material": "^5.16.7",
     "aos": "^2.3.4",
-    "axios": "^1.7.2",
+    "axios": "^1.7.5",
     "express": "^4.19.2",
     "jspdf": "^2.5.1",
     "jspdf-autotable": "^3.8.2",

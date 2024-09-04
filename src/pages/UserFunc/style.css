@@ -1,0 +1,202 @@
+/* .edit {
+    background-color: rgb(132, 175, 134);
+    width: 50%;
+    text-align: center;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    border-radius: 25px;
+    margin-left: 340px;
+    margin-right: 300px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.edit .content h1{
+    padding: 3%;
+    margin-bottom: 10px;
+    background-color: rgb(120, 150, 120);
+    border-radius: 10px;
+    margin-left: 90px;
+    margin-right: 90px;
+    font-size: 25px;
+}
+
+.edit .content h2{
+    text-align: right;
+    margin-right: 10px;
+    font-size: 25px;
+}
+
+.edit .content h2 input{
+    width: 60%;
+    height: 25px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    border: 5px;
+    border-radius: 5px;
+}
+
+.edit-button{
+    margin-right: 200px;
+    width: 25%;
+    height: 25px;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.edit-button:hover{
+    background-color: lightgray;
+}
+
+.edit-button:active{
+    background-color: grey;
+} */
+
+
+/* style.css */
+.edit {
+    min-height: 90vh;
+    padding-top: 2rem;
+}
+
+.formulario {
+    border-top: 8px solid var(--secondary);
+    background-color: #fff;
+    padding: 4rem;
+    border-radius: 12px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    display: flex;
+    flex-direction: column;
+    margin: 4rem auto 0;
+    max-width: 600px;
+}
+
+label {
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+    margin-top: 2rem;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    color: var(--secondary-color);
+    font-weight: 600;
+    padding: 1rem;
+    font-size: 1.25rem;
+    border: 0.0625rem solid var(--secondary);
+    border-left-width: 0.5rem;
+    border-radius: 0.75rem 0.75rem;
+    transition: all 0.3s;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--secondary-color);
+    font-weight: 600;
+    opacity: 0.7;
+}
+
+input:focus,
+textarea:focus {
+    border-right-width: 8px;
+    border-color: var(--secondary-color);
+}
+
+.button {
+    margin-top: 1.2rem;
+    width: 100%;
+    background-color: var(--secondary);
+    color: var(--background);
+    font-size: 1.5rem;
+    padding: 1rem 0;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.button:hover {
+    background-color: var(--secondary-color);
+}
+
+
+@media (max-width: 511px) {
+    form {
+        padding: 1rem;
+    }
+
+    h2 {
+        font-size: 1.25rem;
+    }
+
+    label {
+        margin-top: 1rem;
+        font-size: 0.75rem;
+    }
+
+    input,
+    select,
+    textarea {
+        border-left-width: 0.25rem;
+        border-radius: 0.6rem 0.6rem;
+        padding: 0.5rem;
+        font-size: 1.2rem;
+    }
+
+    input:focus,
+    textarea:focus {
+        border-right-width: 0.25rem;
+    }
+    .edit {
+        padding: 1rem;
+      }
+    
+      .edit h1{
+        font-size: rem;
+      }
+    
+      .button {
+          margin-top: 1.2rem;
+          font-size: 1.1rem;
+          padding: .8rem 0;
+          border-radius: 8px;
+      }
+}
+.form-group p {
+    color: var(--secondary-color);
+    font-weight: 600;
+    padding: 1rem;
+    font-size: 1.25rem;
+    border: 0.0625rem solid var(--secondary);
+    border-left-width: 0.5rem;
+    border-radius: 0.75rem 0.75rem;
+    background-color: #f9f9f9;
+}
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.button {
+    background-color: var(--secondary);
+    color: #fff;
+    padding: 1rem 2rem;
+    font-size: 1.25rem;
+    border: none;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: var(--secondary-color);
+}

@@ -6,12 +6,14 @@ import SidebarLogged from "../../componentes/SidebarLogged/SidebarLogged";
 import { Outlet, useNavigate} from "react-router-dom";
 import "./style.css";
 import MainContentWrapper from "../../componentes/MainContentWrapper";
+import Chat from "../Chat";
 
 const BeneficiarioDashboard = () => {
   const navigate = useNavigate();
   const handleProfileClick = () => {
-    navigate("/beneficiario-dashboard/userBen"); // Certifique-se de que essa rota está configurada corretamente
+    navigate("/beneficiario-dashboard/userBen");
   };
+
   return (
     <Box sx={{ display: "flex", height: "100vh" }}>
       <SidebarLogged />
@@ -29,6 +31,7 @@ const BeneficiarioDashboard = () => {
         <MainContentWrapper>
           <Outlet />
         </MainContentWrapper>
+        <Chat /> 
       </Box>
     </Box>
   );

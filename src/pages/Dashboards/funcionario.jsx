@@ -6,6 +6,7 @@ import SidebarLogged from "../../componentes/SidebarLogged/SidebarLogged";
 import { Outlet,useNavigate } from "react-router-dom";
 import "./style.css";
 import MainContentWrapper from "../../componentes/MainContentWrapper";
+import Chat from "../Chat";
 
 
 
@@ -33,6 +34,7 @@ const FuncionarioDashboard = () => {
         <MainContentWrapper>
           <Outlet />
         </MainContentWrapper>
+        <Chat /> 
       </Box>
     </Box>
   );

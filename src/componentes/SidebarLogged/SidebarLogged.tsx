@@ -8,7 +8,8 @@ import {
   Assignment,
   DocumentScanner,
   AttachMoney,
-  Settings
+  Settings,
+  AccountCircle 
 } from '@mui/icons-material';
 import './style.css';
 
@@ -56,7 +57,7 @@ const getMenuItemsByRole = (role) => {
         { text: 'Financeiro', link: '/funcionario-dashboard/financeiro', icon: <AttachMoney /> },
         { text: 'Modelos', link: '/funcionario-dashboard/documentos', icon: <DocumentScanner /> },
         { text: 'Documentos', link: '/funcionario-dashboard/documentosbenFunc', icon: <DocumentScanner /> },
-        { text: 'Chat', link: '/funcionario-dashboard/chat', icon: <DocumentScanner /> }
+        // { text: 'Chat', link: '/funcionario-dashboard/chat', icon: <DocumentScanner /> }
       ];
     case 'beneficiario':
       return [
@@ -65,7 +66,8 @@ const getMenuItemsByRole = (role) => {
         { text: 'Serviços', link: '/beneficiario-dashboard/servicos', icon: <Settings /> },
         { text: 'Modelos', link: '/beneficiario-dashboard/documentos', icon: <DocumentScanner /> },
         { text: 'Documentos', link: '/beneficiario-dashboard/documentosben', icon: <DocumentScanner /> },
-        { text: 'Chat', link: '/beneficiario-dashboard/chat', icon: <DocumentScanner /> }
+        // { text: 'Chat', link: '/beneficiario-dashboard/chat', icon: <DocumentScanner /> },
+        //{ text: 'Perfil', link: '/beneficiario-dashboard/profile', icon: <AccountCircle /> } 
       ];
     default:
       return [];

@@ -1,18 +1,28 @@
+.Box {
+  background-color: #f9fdf8 !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+}
+
 .logo {
-  overflow: hidden; 
+  flex-grow: 1;
 }
 
 .logo img {
-  max-width: 12%; 
+  max-width: 35%; 
 }
 
-.Box {
-  background-color: #f9fdf8 !important;
+.desktop {
+  display: flex;
+  flex-direction: row;
+  gap: 2.5rem;
+  justify-content: flex-end; 
 }
 
 .appbar {
   padding: 0.1rem 3.25rem;
-  max-width: 1200px;
+  max-width: 1800px;
   margin: 0 auto;
 }
 
@@ -20,7 +30,7 @@ a {
   all: unset;
   cursor: pointer;
   font-size: 1.4rem;
-  color: #030c04a6;
+  color: #323b33a6;
   font-weight: 700;
   position: relative;
   display: inline-block;

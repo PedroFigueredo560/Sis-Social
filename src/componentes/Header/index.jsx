@@ -29,44 +29,45 @@ export default function Header() {
         }}
       >
         <AppBar position="static" color="transparent" elevation={0} className="appbar">
-          <Toolbar>
-            <Typography className="logo">
-              <Link to="/" className="logo-link">
-                <img className="logo" src="src/assets/sis-social-high-resolution-logo-transparent (1).png" alt="Logo_sis_social" />
-              </Link>
-            </Typography>
-            <span className="desktop">
-              <Typography>
-                <a href="/">Início</a>
-              </Typography>
-              <Typography>
-                <a href="#sobre">Sobre</a>
-              </Typography>
-              <Typography>
-                <a href="#servicos">Serviços</a>
-              </Typography>
-              <Typography>
-                <a href="#contato">Contato</a>
-              </Typography>
-              <Typography>
-                <Link to="/login">Login</Link>
-              </Typography>
-              <Typography>
-                <Link to="/cadastro" className="button-cadastro">Cadastro</Link>
-              </Typography>
-            </span>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ mr: -2, color: 'white' }}
-              onClick={toggleSidebar}
-              className="mobile-links"
-            >
-              <MenuIcon />
-            </IconButton>
-          </Toolbar>
+        <Toolbar>
+  <Typography className="logo">
+    <Link to="/" className="logo-link">
+      <img className="logo" src="src/assets/logo1.png" alt="Logo_sis_social" />
+    </Link>
+  </Typography>
+  <span className="desktop">
+    <Typography>
+      <a href="/">Início</a>
+    </Typography>
+    <Typography>
+      <a href="#sobre">Sobre</a>
+    </Typography>
+    <Typography>
+      <a href="#servicos">Serviços</a>
+    </Typography>
+    <Typography>
+      <a href="#contato">Contato</a>
+    </Typography>
+    <Typography>
+      <Link to="/login">Login</Link>
+    </Typography>
+    <Typography>
+      <Link to="/cadastro" className="button-cadastro">Cadastro</Link>
+    </Typography>
+  </span>
+  <IconButton
+    size="large"
+    edge="start"
+    color="inherit"
+    aria-label="menu"
+    sx={{ mr: -2, color: 'white' }}
+    onClick={toggleSidebar}
+    className="mobile-links"
+  >
+    <MenuIcon />
+  </IconButton>
+</Toolbar>
+
         </AppBar>
       </Box>
       <Sidebar open={open} toggleSidebar={toggleSidebar} />

@@ -112,9 +112,8 @@ const Home = () => {
                   O Sis-Social é mais do que uma ferramenta; é um aliado na melhoria contínua dos serviços sociais.
                 </p>
                 <p>
-                  O Sis-Social oferece uma série de funcionalidades para aprimorar a administração de serviços sociais, incluindo:
+                  O Sis-Social oferece uma série de funcionalidades para aprimorar a administração de serviços sociais, Veja mais na proxima seção
                 </p>
-                <p>Veja mais na proxima seção</p>
               </div>
             </div>
           </div>
@@ -146,7 +145,7 @@ const Home = () => {
             <div className="card-services">
               <IntegrationInstructionsIcon fontSize="large" className="card-icon" />
               <h3>Integração com Sistemas Existentes</h3>
-              <p>Integre com outros sistemas da sua instituição.</p>
+              <p>Integração com outros sistemas.</p>
             </div>
             <div className="card-services">
               <TrainingIcon fontSize="large" className="card-icon" />
@@ -165,18 +164,18 @@ const Home = () => {
             <div className="contact-form">
               <form>
                 <label htmlFor="name">
-                  Name:
+                  Nos informe seu nome:
                   <input type="text" id="name" name="name" required />
                 </label>
                 <label htmlFor="email">
-                  Email:
+                Nos informe seu Email:
                   <input type="email" id="email" name="email" required />
                 </label>
                 <label htmlFor="message">
-                  Message:
+                  Digite Sua mensagem:
                   <textarea id="message" name="message" required></textarea>
                 </label>
-                <button type="submit">Submit</button>
+                <button type="submit">Enviar</button>
               </form>
             </div>
 

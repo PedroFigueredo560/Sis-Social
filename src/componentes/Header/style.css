@@ -1,8 +1,9 @@
 .Box {
-  background-color: #f9fdf8 !important;
+  background-color: #ffffff !important;
   display: flex;
   justify-content: space-between;
   align-items: center; 
+  box-shadow: 0 2px 4px rgba(36, 35, 35, 0.1);
 }
 
 .logo {
@@ -29,12 +30,13 @@
 a {
   all: unset;
   cursor: pointer;
-  font-size: 1.4rem;
-  color: #323b33a6;
+  font-size: 1.5rem;
+  color: #2a442ec0;
   font-weight: 700;
   position: relative;
   display: inline-block;
   transition: color 0.3s ease;
+  font-family: "Open Sans", sans-serif;
 }
 
 a::after {

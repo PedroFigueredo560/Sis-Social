@@ -59,16 +59,17 @@ const FuncionarioDashboard = () => {
         </div>
         
         <MainContentWrapper>
-          {/* Título centralizado */}
-          <h2 className="transparency-title">Transparência</h2>
-          
-          {/* Caixa com os contadores */}
-          <div className="transparency-box">
-            <div className="counter-item">Beneficiários: {numBeneficiarios}</div>
-            <div className="counter-item">Funcionários: {numFuncionarios}</div>
-            <div className="counter-item">Atendimentos Marcados: {numAtendimentos}</div>
-            <div className="counter-item">Serviços: {numServicos}</div>
-          </div>
+        {location.pathname === "/funcionario-dashboard" && (
+            <>
+              <h2 className="transparency-title">Transparência</h2>
+              <div className="transparency-box">
+                <div className="counter-item">Beneficiários: {numBeneficiarios}</div>
+                <div className="counter-item">Funcionários: {numFuncionarios}</div>
+                <div className="counter-item">Atendimentos Marcados: {numAtendimentos}</div>
+                <div className="counter-item">Serviços: {numServicos}</div>
+              </div>
+            </>
+          )}
           <Outlet />
         </MainContentWrapper>
         <Chat /> 

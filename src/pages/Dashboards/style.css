@@ -70,4 +70,27 @@
       gap: 8px;
     }
   }
+  .transparency-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: black;
+  }
   
+  .transparency-box {
+    background-color: var(--secondary);
+    border: 2px solid var(--secondary); /* Borda com a cor var(--secondary) */
+    padding: 20px;
+    border-radius: 10px; /* Bordas arredondadas */
+    max-width: 400px; /* Largura máxima da caixa */
+    margin: 0 auto; /* Centraliza a caixa horizontalmente */
+  }
+  
+  .counter-item {
+    font-size: 20px; /* Fonte grande */
+    font-weight: bold;
+    color: white; /* Cor da fonte var(--secondary) */
+    margin-bottom: 15px;
+    text-align: center;
+  }

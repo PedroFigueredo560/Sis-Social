@@ -2,13 +2,18 @@ import React, { useState, useEffect } from "react";
 import { Box, IconButton, Badge } from "@mui/material";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
+import ScheduleIcon from "@mui/icons-material/Schedule";
+import GroupAddIcon from '@mui/icons-material/GroupAdd';
+import BuildIcon from "@mui/icons-material/Build";
 import SidebarLogged from "../../componentes/SidebarLogged/SidebarLogged";
-import { Outlet,useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import "./style.css";
 import MainContentWrapper from "../../componentes/MainContentWrapper";
 import Chat from "../Chat";
 import axios from 'axios';
-
+import { HiMenuAlt3 } from "react-icons/hi";
 
 const FuncionarioDashboard = () => {
   const navigate = useNavigate();
@@ -16,8 +21,9 @@ const FuncionarioDashboard = () => {
   const [numFuncionarios, setNumFuncionarios] = useState(0);
   const [numAtendimentos, setNumAtendimentos] = useState(0);
   const [numServicos, setNumServicos] = useState(0);
+
   const handleProfileClick = () => {
-    navigate("/funcionario-dashboard/user"); // Certifique-se de que essa rota está configurada corretamente
+    navigate("/funcionario-dashboard/user");
   };
 
   useEffect(() => {
@@ -53,26 +59,70 @@ const FuncionarioDashboard = () => {
             </Badge>
           </IconButton>
           <IconButton edge="end" onClick={handleProfileClick} aria-label="account of current user">
-            
             <AccountCircleIcon sx={{ fontSize: 24 }} />
           </IconButton>
         </div>
         
         <MainContentWrapper>
-        {location.pathname === "/funcionario-dashboard" && (
+          {location.pathname === "/funcionario-dashboard" && (
             <>
-              <h2 className="transparency-title">Transparência</h2>
-              <div className="transparency-box">
-                <div className="counter-item">Beneficiários: {numBeneficiarios}</div>
-                <div className="counter-item">Funcionários: {numFuncionarios}</div>
-                <div className="counter-item">Atendimentos Marcados: {numAtendimentos}</div>
-                <div className="counter-item">Serviços: {numServicos}</div>
-              </div>
+              <h2 className="transparency-title">Transparencia</h2>
+              <section className="Container">
+                <div className="card-containers-grid">
+                  <div className="card-container">
+                  <PeopleAltIcon sx={{ fontSize: 28, color: "#c7853a" }} />
+                    <div className="card-container-header">
+                     
+                      <h2>{numBeneficiarios}</h2>
+                      <h3>Beneficiários</h3>
+                    </div>
+                    <div className="card-body">
+                      <p>Total de beneficiários registrados no sistema.</p>
+                    </div>
+                  </div>
+
+                  <div className="card-container">
+                  <GroupAddIcon sx={{ fontSize: 28, color: "#c7853a" }} />
+                    <div className="card-container-header">
+      
+                      <h2>{numFuncionarios}</h2>
+                      <h3>Funcionários</h3>
+                    </div>
+                    <div className="card-body">
+                      <p>Total de funcionários ativos.</p>
+                    </div>
+                  </div>
+
+                  <div className="card-container">
+                  <ScheduleIcon sx={{ fontSize: 28, color: "#c7853a" }} />
+                    <div className="card-container-header">
+          
+                      <h2>{numAtendimentos}</h2>
+                      <h3>Atendimentos</h3>
+                    </div>
+                    <div className="card-body">
+                      <p>Atendimentos marcados no sistema.</p>
+                    </div>
+                  </div>
+
+                  <div className="card-container">
+                  <BuildIcon sx={{ fontSize: 28, color: "#c7853a" }} />
+                    <div className="card-container-header">
+                      
+                      <h2>{numServicos}</h2>
+                      <h3>Serviços</h3>
+                    </div>
+                    <div className="card-body">
+                      <p>Serviços disponíveis para os beneficiários.</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
             </>
           )}
           <Outlet />
         </MainContentWrapper>
-        <Chat /> 
+        <Chat />
       </Box>
     </Box>
   );

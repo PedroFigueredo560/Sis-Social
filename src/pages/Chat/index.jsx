@@ -31,8 +31,10 @@ const Chat = () => {
 
   return (
     <div>
-      {!isOpen && (
+      <div className={isOpen ? 'blur-background' : ''}>
+      </div>
 
+      {!isOpen && (
         <div className="chat-link" onClick={() => setIsOpen(true)}>
           <IconButton edge="end" onClick={() => setIsOpen(true)}>
             <Message sx={{ fontSize: 24 }} />
@@ -44,7 +46,6 @@ const Chat = () => {
         <div className="chat-popup">
           <div className="chat-header">
             <h3>Chat</h3>
-
             <span className="material-icons">
               <IconButton edge="end" onClick={() => setIsOpen(false)}>
                 <Close sx={{ fontSize: 24 }} />
@@ -70,11 +71,9 @@ const Chat = () => {
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Digite sua mensagem"
             />
-          <button type="submit">
-              <IconButton edge="end" color="primary">
-                <Send sx={{ fontSize: 24 }} />
-              </IconButton>
-            </button>
+            <IconButton type="submit" edge="end" color="primary">
+              <Send sx={{ fontSize: 24 }} />
+            </IconButton>
           </form>
         </div>
       )}

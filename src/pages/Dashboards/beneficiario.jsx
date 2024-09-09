@@ -2,34 +2,30 @@ import React, { useState, useEffect } from "react";
 import { Badge, Box, IconButton } from "@mui/material";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import axios from 'axios';
+import ScheduleIcon from "@mui/icons-material/Schedule";
+import BuildIcon from "@mui/icons-material/Build";
 import SidebarLogged from "../../componentes/SidebarLogged/SidebarLogged";
 import { Outlet, useNavigate } from "react-router-dom";
 import "./style.css";
 import MainContentWrapper from "../../componentes/MainContentWrapper";
 import Chat from "../Chat";
+import axios from 'axios';
 
 const BeneficiarioDashboard = () => {
-  const [numBeneficiarios, setNumBeneficiarios] = useState(0);
-  const [numFuncionarios, setNumFuncionarios] = useState(0);
-  const [numAtendimentos, setNumAtendimentos] = useState(0);
   const [numServicos, setNumServicos] = useState(0);
+  const [numAgendamentos, setNumAgendamentos] = useState(0);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [bensRes, funcsRes, atendimentosRes, servicosRes] = await Promise.all([
-          axios.get('http://localhost:5000/get_ben'),
-          axios.get('http://localhost:5000/get_func'),
-          axios.get('http://localhost:5000/get_atendimentos'),
-          axios.get('http://localhost:5000/get_servicos')
+        const [servicosRes, agendamentosRes] = await Promise.all([
+          axios.get('http://localhost:5000/get_servicos'),
+          axios.get('http://localhost:5000/agendamentos')
         ]);
 
-        setNumBeneficiarios(bensRes.data.length);
-        setNumFuncionarios(funcsRes.data.length);
-        setNumAtendimentos(atendimentosRes.data.length);
         setNumServicos(servicosRes.data.length);
+        setNumAgendamentos(agendamentosRes.data.length);
       } catch (error) {
         console.error("Erro ao buscar dados:", error);
       }
@@ -57,15 +53,34 @@ const BeneficiarioDashboard = () => {
           </IconButton>
         </div>
         <MainContentWrapper>
-        {location.pathname === "/beneficiario-dashboard" && (
+          {location.pathname === "/beneficiario-dashboard" && (
             <>
               <h2 className="transparency-title">Transparência</h2>
-              <div className="transparency-box">
-                <div className="counter-item">Beneficiários: {numBeneficiarios}</div>
-                <div className="counter-item">Funcionários: {numFuncionarios}</div>
-                <div className="counter-item">Atendimentos Marcados: {numAtendimentos}</div>
-                <div className="counter-item">Serviços: {numServicos}</div>
-              </div>
+              <section className="Container">
+                <div className="card-containers-grid">
+                  <div className="card-container">
+                    <BuildIcon sx={{ fontSize: 28, color: "#c7853a" }} />
+                    <div className="card-container-header">
+                      <h2>{numServicos}</h2>
+                      <h3>Serviços</h3>
+                    </div>
+                    <div className="card-body">
+                      <p>Serviços disponíveis para os beneficiários.</p>
+                    </div>
+                  </div>
+
+                  <div className="card-container">
+                    <ScheduleIcon sx={{ fontSize: 28, color: "#c7853a" }} />
+                    <div className="card-container-header">
+                      <h2>{numAgendamentos}</h2>
+                      <h3>Agendamentos</h3>
+                    </div>
+                    <div className="card-body">
+                      <p>Agendamentos marcados no sistema.</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
             </>
           )}
           <Outlet />

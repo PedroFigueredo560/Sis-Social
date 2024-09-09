@@ -12,6 +12,25 @@
     justify-content: space-between;
     overflow-y: auto; 
     z-index: 1000;
+    transition: width 0.3s ease;
+}
+
+.sidebar-fixed.collapsed {
+    width: 80px; 
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.menu-button {
+    color: white;
+    margin-bottom: 10px; 
+}
+
+.sidebar-content {
+    flex: 1;
 }
 
 .sidebar-list {
@@ -25,6 +44,7 @@
     display: flex; 
     align-items: center; 
     padding: 10px;
+    white-space: nowrap;
 }
 
 .sidebar-item a {
@@ -38,6 +58,12 @@
 
 .sidebar-item a:hover {
     text-decoration: underline;
+}
+
+.logout-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .logout-button {
@@ -65,7 +91,11 @@
         z-index: 1000; 
     }
 
-    .sidebar-list {
+    .sidebar-header {
+        display: none; 
+    }
+
+    .sidebar-content {
         display: flex;
         flex-direction: row;
         justify-content: space-around;
@@ -73,6 +103,7 @@
         margin: 0;
         width: 100%;
     }
+
     .sidebar-item {
         margin: 0;
         padding: 10px;
@@ -87,11 +118,47 @@
     }
 
     .logout-button {
-        display: none; }
-
-
-    .main-content {
-        margin-left: 0;
-        padding-bottom: 60px; 
+        display: none; 
     }
 }
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .menu-button {
+    color: white;
+    margin: 0;
+  }
+  
+  .sidebar-item {
+    display: flex;
+    align-items: center; 
+    padding: 10px;
+    margin: 0;
+  }
+  
+  .sidebar-item .MuiSvgIcon-root {
+    margin-right: 10px; 
+    font-size: 20px; 
+  }
+  
+
+  .sidebar-fixed.collapsed .sidebar-item {
+    justify-content: center; 
+  }
+  
+  .sidebar-fixed.collapsed .sidebar-item .MuiSvgIcon-root {
+    font-size: 25px; 
+  }
+  
+  .logout-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: auto;
+  }
+  

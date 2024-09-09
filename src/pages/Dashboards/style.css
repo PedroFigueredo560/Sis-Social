@@ -96,22 +96,22 @@
   gap: 16px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 790px) {
   .icons {
     top: 4px;
     right: 8px;
     gap: 8px;
   }
 
+   .card-container {
+    padding: 1rem;
+    max-width: 100%;
+    box-shadow: none; 
+  }
   .card-containers-grid {
     flex-direction: column;
     align-items: stretch;
-    width: 100%; 
-  }
-
-  .card-container {
-    flex: 1 1 100%;
-    max-width: 100%;
+    width: 80%; 
   }
 
   .card-container h2 {

@@ -1,3 +1,5 @@
+ATENDIMENTOS
+
   .table-container {
     width: 80%;
     max-width: 100%;
@@ -22,7 +24,6 @@
   .table-actions button {
     font-weight: 400;
     padding: 0.6rem 1rem;
-    background-color: var(--secondary);
     border-radius: 4px;
     cursor: pointer;
     transition: 0.3s ease-in-out;
@@ -33,7 +34,6 @@
     opacity: 0.9;
   }
   
-  /* Estilo da tabela */
   table {
     width: 100%;
     border-collapse: collapse;

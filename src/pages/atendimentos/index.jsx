@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IconButton, Tooltip } from '@mui/material';
@@ -136,7 +137,6 @@ function Atendimentos() {
     <FormTemplate isForm={false}>
       <h1>Atendimentos</h1>
     <div className="container">
-      <div className="content">
         <div className="table-header">
           <div className="table-actions">
             <button onClick={handleRegisterAtendimento}>Registrar Novo Atendimento</button>
@@ -187,9 +187,9 @@ function Atendimentos() {
           </div>
         )}
       </div>
-    </div>
     </FormTemplate>
   );
 }
 
 export default Atendimentos;
+

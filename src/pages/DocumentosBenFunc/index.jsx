@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import "./style.css";
+import FormTemplate from '../../componentes/formTemplate';
 
 const FileUpload = () => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -38,11 +39,12 @@ const FileUpload = () => {
   };
 
   return (
-    <div className="file-upload-container">
-      <div className="uploaded-files">
+    <FormTemplate isForm={false}>
+       <h1>Documentos</h1>
+
         {Object.keys(uploadedFiles).map((cpf) => (
-          <div key={cpf} className="cpf-section">
-            <h3>Documentos por CPF: {cpf}</h3>
+          <div key={cpf} >
+            <h2 className="title">Documentos por CPF: {cpf}</h2>
             <div className="download-container">
               {uploadedFiles[cpf].map((file) => (
                 <div key={file.name} className="document-box">
@@ -59,8 +61,8 @@ const FileUpload = () => {
             </div>
           </div>
         ))}
-      </div>
-    </div>
+
+    </FormTemplate>
   );
 };
 

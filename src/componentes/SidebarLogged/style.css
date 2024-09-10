@@ -21,22 +21,14 @@
 
 .sidebar-header {
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
 .menu-button {
     color: white;
-    margin-bottom: 10px; 
-}
-
-.sidebar-content {
-    flex: 1;
-}
-
-.sidebar-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    font-size: 30px; 
 }
 
 .sidebar-item {
@@ -56,13 +48,13 @@
     font-size: 1.2rem;
 }
 
-.sidebar-item a:hover {
+.sidebar-link:hover {
     text-decoration: underline;
 }
 
 .logout-container {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
 }
 
@@ -90,9 +82,18 @@
         background-color: #6a9671;
         z-index: 1000; 
     }
+    
+    .sidebar-list {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto; 
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
 
     .sidebar-header {
-        display: none; 
+        display: none; /
     }
 
     .sidebar-content {
@@ -120,45 +121,24 @@
     .logout-button {
         display: none; 
     }
+
+    .main-content {
+        margin-left: 0;
+        padding-bottom: 60px; 
+    }
 }
 
-.sidebar-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-  
-  .menu-button {
-    color: white;
-    margin: 0;
-  }
-  
-  .sidebar-item {
-    display: flex;
-    align-items: center; 
-    padding: 10px;
-    margin: 0;
-  }
-  
-  .sidebar-item .MuiSvgIcon-root {
-    margin-right: 10px; 
-    font-size: 20px; 
-  }
-  
-
-  .sidebar-fixed.collapsed .sidebar-item {
+.sidebar-fixed.collapsed .sidebar-item {
     justify-content: center; 
-  }
-  
-  .sidebar-fixed.collapsed .sidebar-item .MuiSvgIcon-root {
+}
+
+.sidebar-fixed.collapsed .sidebar-item .MuiSvgIcon-root {
     font-size: 25px; 
-  }
-  
-  .logout-container {
+}
+
+.logout-container {
     display: flex;
     align-items: flex-start;
     justify-content: center;
     margin-top: auto;
-  }
-  
+}

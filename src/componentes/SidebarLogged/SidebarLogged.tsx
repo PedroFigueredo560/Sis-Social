@@ -53,14 +53,14 @@ const SidebarLogged: React.FC = () => {
         <List className="sidebar-list">
           {menuItems.map((item) => (
             <ListItem button key={item.text} className="sidebar-item">
-              {React.cloneElement(item.icon, { sx: { fontSize: 30, color: 'white' } })}
-              {isMenuOpen && (
-                <Typography>
-                  <Link to={item.link} className="sidebar-link">
+              <Link to={item.link} className="sidebar-link">
+                {React.cloneElement(item.icon, { sx: { fontSize: 20, color: 'white' } })}
+                {isMenuOpen && (
+                  <Typography sx={{ marginLeft: 1, fontSize: '1.2rem', color: 'white' }}>
                     {item.text}
-                  </Link>
-                </Typography>
-              )}
+                  </Typography>
+                )}
+              </Link>
             </ListItem>
           ))}
         </List>

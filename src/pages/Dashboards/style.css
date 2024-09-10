@@ -111,7 +111,7 @@
   .card-containers-grid {
     flex-direction: column;
     align-items: stretch;
-    width: 80%; 
+    width: 100%; 
   }
 
   .card-container h2 {

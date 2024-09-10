@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { IconButton, Tooltip } from '@mui/material';
+import { Edit as EditIcon, Delete as DeleteIcon, ExpandMore as ExpandIcon } from '@mui/icons-material';
 import './style.css'; // Import your CSS file for styling
+import FormTemplate from '../../componentes/formTemplate';
 
 function Beneficiarios() {
   const [beneficiarios, setBeneficiarios] = useState([]);
   const [error, setError] = useState(null);
-  const [editBeneficiariosCpf, setEditBeneficiariosCpf] = useState(null);
-  const [editBeneficiariosData, setEditBeneficiariosData] = useState({ name: '', cpf: '', jobTitle: '' });
   const navigate = useNavigate();
-  
 
   useEffect(() => {
     const fetchBeneficiarios = async () => {
       try {
-        const response = await fetch('http://localhost:5000/get_ben'); // Use fetch for wider browser compatibility
+        const response = await fetch('http://localhost:5000/get_ben');
         const data = await response.json();
         setBeneficiarios(data);
       } catch (error) {
@@ -25,49 +25,50 @@ function Beneficiarios() {
     fetchBeneficiarios();
   }, []);
 
-  const handleRegisterBeneficiarios = async () => {
+  const handleRegisterBeneficiarios = () => {
     navigate("/cadastro");
   };
 
   const handleEditBeneficiarios = (beneficiariosCpf) => {
-    setEditBeneficiariosCpf(beneficiariosCpf); // Set the clicked cpf for editing
     navigate(`/edit_beneficiario/${beneficiariosCpf}`);
   };
-  
+
   const handleDetalheBeneficiario = (beneficiarioCpf) => {
     navigate(`/detalhe_beneficiario/${beneficiarioCpf}`);
   };
 
   const handleDeleteBeneficiarios = async (beneficiariosCpf) => {
-    if (window.confirm('Are you sure you want to delete this beneficiarios?')) {
-      const data = beneficiariosCpf;
+    if (window.confirm('Tem certeza que deseja deletar este beneficiário?')) {
       try {
         const response = await fetch('http://localhost:5000/delete_beneficiario', {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(data),
+          body: JSON.stringify({ cpf: beneficiariosCpf }),
         });
         if (response.ok) {
-          const updatedBeneficiarios = beneficiarios.filter((beneficiarios) => beneficiarios.cpf !== beneficiariosCpf);
-          setBeneficiarios(updatedBeneficiarios);
+          setBeneficiarios((prev) => prev.filter((beneficiario) => beneficiario.cpf !== beneficiariosCpf));
         } else {
-          throw new Error('Failed to delete beneficiarios.');
+          throw new Error('Falha ao deletar beneficiário.');
         }
       } catch (error) {
-        console.error('Erro ao deletar beneficiario:', error);
-        setError(error.message || 'Ocorreu um erro ao tentar deletar o beneficiarios.');
+        console.error('Erro ao deletar beneficiário:', error);
+        setError(error.message || 'Ocorreu um erro ao tentar deletar o beneficiário.');
       }
     }
   };
 
   return (
-    <div className="beneficiarios">
-      <div className="content">
-        <h1>Beneficiários</h1>
-        <h2>
-          <button onClick={handleRegisterBeneficiarios}>Registrar</button>
+    <FormTemplate isForm={false}>
+      <h1>Beneficiários</h1>
+      <div className="container">
+        <div className="table-container">
+          <div className="table-header">
+            <div className="table-actions">
+              <button onClick={handleRegisterBeneficiarios}>Registrar</button>
+            </div>
+          </div>
           {error ? (
             <p className="error-message">{error}</p>
           ) : (
@@ -81,25 +82,37 @@ function Beneficiarios() {
                 </tr>
               </thead>
               <tbody>
-                {beneficiarios.map((beneficiarios) => (
-                  <tr key={beneficiarios.cpf}>
-                    <td>{beneficiarios.name_ben}</td>
-                    <td>{beneficiarios.cpf}</td>
-                    <td>{beneficiarios.servicos}</td>
+                {beneficiarios.map((beneficiario) => (
+                  <tr key={beneficiario.cpf}>
+                    <td>{beneficiario.name_ben}</td>
+                    <td>{beneficiario.cpf}</td>
+                    <td>{beneficiario.servicos}</td>
                     <td>
-                      <button onClick={() => handleEditBeneficiarios(beneficiarios.cpf)}>Editar</button>
-                      <button onClick={() => handleDeleteBeneficiarios(beneficiarios.cpf)}>Excluir</button>
-                      <button onClick={() => handleDetalheBeneficiario(beneficiarios.cpf)}>Expandir</button>
+                      <Tooltip title="Editar">
+                        <IconButton onClick={() => handleEditBeneficiarios(beneficiario.cpf)} color="primary">
+                          <EditIcon className="icon" />
+                        </IconButton>
+                      </Tooltip>
+                      <Tooltip title="Excluir">
+                        <IconButton onClick={() => handleDeleteBeneficiarios(beneficiario.cpf)} color="error">
+                          <DeleteIcon className="icon" />
+                        </IconButton>
+                      </Tooltip>
+                      <Tooltip title="Detalhes">
+                        <IconButton onClick={() => handleDetalheBeneficiario(beneficiario.cpf)} color="default">
+                          <ExpandIcon className="icon" />
+                        </IconButton>
+                      </Tooltip>
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
           )}
-        </h2>
+        </div>
       </div>
-    </div>
-  )
-};
+    </FormTemplate>
+  );
+}
 
 export default Beneficiarios;

@@ -57,56 +57,54 @@ function Funcionarios() {
   };
 
   return (
-    <>
-      <ToastContainer />
       <FormTemplate isForm={false}>
           <h1>Funcionários</h1>
           <section className="container">
-          <div className="table-container">
-            <div className="table-header">
-              <div className="table-actions">
-                <button onClick={handleRegisterFuncionario}>Novo Funcionário</button>
+            <div className="table-container">
+              <div className="table-header">
+                <div className="table-actions">
+                  <button onClick={handleRegisterFuncionario}>Novo Funcionário</button>
+                </div>
               </div>
-            </div>
-            {error ? (
-              <p className="error-message">{error}</p>
-            ) : (
-              <table>
-                <thead>
-                  <tr>
-                    <th>Nome</th>
-                    <th>CPF</th>
-                    <th>Cargo</th>
-                    <th>Ações</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {funcionarios.map((funcionario) => (
-                    <tr key={funcionario.cpf}>
-                      <td>{funcionario.name_func}</td>
-                      <td>{funcionario.cpf}</td>
-                      <td>{funcionario.job}</td>
-                      <td>
-                        <Tooltip title="Editar">
-                          <IconButton onClick={() => handleEditFuncionario(funcionario.cpf)} color="primary">
-                            <EditIcon />
-                          </IconButton>
-                        </Tooltip>
-                        <Tooltip title="Excluir">
-                          <IconButton onClick={() => handleDeleteFuncionario(funcionario.cpf)} color="error">
-                            <DeleteIcon />
-                          </IconButton>
-                        </Tooltip>
-                      </td>
+              {error ? (
+                <p className="error-message">{error}</p>
+              ) : (
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Nome</th>
+                      <th>CPF</th>
+                      <th>Cargo</th>
+                      <th>Ações</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            )}
-          </div>
-        </section>
+                  </thead>
+                  <tbody>
+                    {funcionarios.map((funcionario) => (
+                      <tr key={funcionario.cpf}>
+                        <td>{funcionario.name_func}</td>
+                        <td>{funcionario.cpf}</td>
+                        <td>{funcionario.job}</td>
+                        <td>
+                          <Tooltip title="Editar">
+                            <IconButton onClick={() => handleEditFuncionario(funcionario.cpf)} color="primary" style={{ fontSize: 40 }}>
+                              <EditIcon />
+                            </IconButton>
+                          </Tooltip>
+                          <Tooltip title="Excluir">
+                            <IconButton onClick={() => handleDeleteFuncionario(funcionario.cpf)} color="error" style={{ fontSize: 40 }}>
+                              <DeleteIcon />
+                            </IconButton>
+                          </Tooltip>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
+            </div>
+          </section>
       </FormTemplate>
-    </>
   );
 }  
+
 export default Funcionarios;

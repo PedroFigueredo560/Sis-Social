@@ -1,44 +1,93 @@
-/* Box for registering new atendimento */
-.register-box {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.register-box button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: var(--secondary-color);
-    color: white;
-    font-size: 16px;
-}
-
-.register-box p {
-    margin-top: 10px;
-    font-size: 14px;
-    color: #555;
-}
-
-/* Box for the report button */
-.report-box {
+  .table-container {
+    width: 80%;
+    max-width: 100%;
+    margin-top: 1rem;
+    overflow-x: auto;
+    box-sizing: border-box;
+    font-size: 1.4rem;
+  }
+  
+  .table-header {
     display: flex;
     justify-content: flex-end;
-    margin-top: 20px;
-}
-
-.report-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .table-actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .table-actions button {
+    font-weight: 400;
+    padding: 0.6rem 1rem;
+    background-color: var(--secondary);
+    border-radius: 4px;
     cursor: pointer;
-    background-color: var(--secondary-color);
-    color: white;
-    font-size: 16px;
-}
-.atendimentos{
-    font-size: 13.4px;
-}
+    transition: 0.3s ease-in-out;
+    color: var(--background-secondary);
+  }
+  
+  .table-actions button:hover {
+    opacity: 0.9;
+  }
+  
+  /* Estilo da tabela */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+    font-size: 1.2rem;
+    word-wrap: break-word;
+  }
+  
+  th {
+    background-color: #e7f7e4;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  td {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    table {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+  
+    th, td {
+      padding: 10px 5px;
+      font-size: 0.85rem;
+    }
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 1.2rem;
+  }
+  
+  /* Estilo dos botões com ícones */
+  button {
+    font-size: 1.2rem;
+    margin: 0 0.5rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  button:hover {
+    opacity: 0.9;
+  }
+  
+  .icon {
+    margin-right: 0.5rem;
+  }
+  

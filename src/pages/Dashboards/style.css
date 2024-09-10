@@ -124,6 +124,10 @@
 }
 
 @media (max-width: 480px) {
+
+  .container{
+    align-items: flex-start;
+  }
   .card-containers-grid {
     padding: 0.5rem;
     gap: 0.5rem; 
@@ -148,4 +152,9 @@
     right: 4px;
     gap: 4px;
   }
+}
+
+.css-607l5s{
+  padding: 24px 0 !important;
+  position: static !important;
 }

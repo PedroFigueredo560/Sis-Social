@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { IconButton, Tooltip } from '@mui/material';
+import { Edit as EditIcon, Delete as DeleteIcon, Description as ReportIcon } from '@mui/icons-material';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import './style.css'; 
+import FormTemplate from '../../componentes/formTemplate';
 
 function Atendimentos() {
   const [atendimentos, setAtendimentos] = useState([]);
   const [error, setError] = useState(null);
-  const [editAtendimentoId, setEditAtendimentoId] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchAtendimentos = async () => {
       try {
-        const response = await fetch('http://localhost:5000/get_atendimentos'); // Fetch atendimentos from the backend
+        const response = await fetch('http://localhost:5000/get_atendimentos');
         const data = await response.json();
         setAtendimentos(data);
       } catch (error) {
@@ -30,12 +32,11 @@ function Atendimentos() {
   };
 
   const handleEditAtendimento = (atendimentoId) => {
-    setEditAtendimentoId(atendimentoId); // Set the clicked id for editing
     navigate(`/edit_atendimento/${atendimentoId}`);
   };
 
   const handleDeleteAtendimento = async (atendimentoId) => {
-    if (window.confirm('Are you sure you want to delete this atendimento?')) {
+    if (window.confirm('Tem certeza que deseja deletar este atendimento?')) {
       try {
         const response = await fetch('http://localhost:5000/delete_atendimento', {
           method: 'DELETE',
@@ -45,10 +46,9 @@ function Atendimentos() {
           body: JSON.stringify({ id: atendimentoId }),
         });
         if (response.ok) {
-          const updatedAtendimentos = atendimentos.filter((atendimento) => atendimento.id !== atendimentoId);
-          setAtendimentos(updatedAtendimentos);
+          setAtendimentos(prev => prev.filter(atendimento => atendimento.id !== atendimentoId));
         } else {
-          throw new Error('Failed to delete atendimento.');
+          throw new Error('Falha ao deletar atendimento.');
         }
       } catch (error) {
         console.error('Erro ao deletar atendimento:', error);
@@ -133,16 +133,22 @@ function Atendimentos() {
   };
 
   return (
-    <div className="atendimentos">
+    <FormTemplate isForm={false}>
+      <h1>Atendimentos</h1>
+    <div className="container">
       <div className="content">
-        <div className="register-box">
-          <button onClick={handleRegisterAtendimento}>Registrar Novo Atendimento</button>
+        <div className="table-header">
+          <div className="table-actions">
+            <button onClick={handleRegisterAtendimento}>Registrar Novo Atendimento</button>
+            <button className="report-button" onClick={generatePDFReport}>
+              <ReportIcon className="icon" /> Gerar Relatório
+            </button>
+          </div>
         </div>
-        <h1>Atendimentos</h1>
         {error ? (
           <p className="error-message">{error}</p>
         ) : (
-          <>
+          <div className="table-container">
             <table>
               <thead>
                 <tr>
@@ -163,20 +169,26 @@ function Atendimentos() {
                     <td>{new Date(atendimento.data).toLocaleString()}</td>
                     <td>{atendimento.duracao} min</td>
                     <td>
-                      <button onClick={() => handleEditAtendimento(atendimento.id)}>Editar</button>
-                      <button onClick={() => handleDeleteAtendimento(atendimento.id)}>Excluir</button>
+                      <Tooltip title="Editar">
+                        <IconButton onClick={() => handleEditAtendimento(atendimento.id)} color="primary">
+                          <EditIcon className="icon" />
+                        </IconButton>
+                      </Tooltip>
+                      <Tooltip title="Excluir">
+                        <IconButton onClick={() => handleDeleteAtendimento(atendimento.id)} color="error">
+                          <DeleteIcon className="icon" />
+                        </IconButton>
+                      </Tooltip>
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
-            <div className="report-box">
-              <button className="report-button" onClick={generatePDFReport}>Gerar Relatório</button>
-            </div>
-          </>
+          </div>
         )}
       </div>
     </div>
+    </FormTemplate>
   );
 }
 

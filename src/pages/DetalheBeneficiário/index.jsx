@@ -14,6 +14,10 @@ const DetalheBeneficiario = () => {
   const [uploadedFiles, setUploadedFiles] = useState({});
   const { cpf } = useParams();
   const navigate = useNavigate();
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [filteredFiles, setFilteredFiles] = useState({});
+  const [searchCpf, setSearchCpf] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     const fetchBeneficiarios = async () => {
@@ -63,16 +67,96 @@ const DetalheBeneficiario = () => {
     fetchUploadedFiles();
     calculoIdade();
   })
+  const handleDocument = (cpf) => {
+    
+  }
+
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+  };
+
+  const handleCpfChange = (event) => {
+    setCpf(event.target.value);
+  };
+
+  const handleSearchCpfChange = (event) => {
+    setSearchCpf(event.target.value);
+  };
+
+  const handleUpload = async () => {
+    if (!cpf) {
+      setErrorMessage('Por favor, digite um CPF antes de enviar um arquivo.');
+      return;
+    }
+    
+    setErrorMessage(''); // Limpar a mensagem de erro, se houver
+
+    const formData = new FormData();
+    formData.append('file', selectedFile);
+    formData.append('cpf', cpf);
+
+    try {
+      const token = localStorage.getItem('token');
+      const response = await axios.post(
+        'http://localhost:5000/upload',
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'multipart/form-data',
+          },
+        }
+      );
+
+      console.log('File uploaded successfully:', response.data);
+      setSelectedFile(null);
+      fetchUploadedFiles();
+    } catch (error) {
+      console.error('Upload error:', error);
+    }
+  };
+
+  const fetchUploadedFiles = async () => {
+    try {
+      const response = await axios.get('http://localhost:5000/uploaded-files');
+      if (response.status === 200) {
+        setUploadedFiles(response.data.files_by_cpf);
+        // Apply the filter initially with an empty searchCpf
+        applyFilter('', response.data.files_by_cpf);
+      } else {
+        console.error('Error fetching files:', response.data.error);
+      }
+    } catch (error) {
+      console.error('Error fetching files:', error);
+    }
+  };
+
+  const applyFilter = (filterCpf, files) => {
+    if (!filterCpf) {
+      setFilteredFiles({});
+      return;
+    }
+    const filtered = {};
+    Object.keys(files).forEach(cpf => {
+      if (cpf.includes(filterCpf)) {
+        filtered[cpf] = files[cpf];
+      }
+    });
+    setFilteredFiles(filtered);
+  };
+
+  useEffect(() => {
+    fetchUploadedFiles();
+  }, []);
+
+  const handleSearch = () => {
+    applyFilter(searchCpf, uploadedFiles);
+  };
 
   const handleDownload = (cpf, fileName) => {
     const downloadUrl = `http://localhost:5000/download/${cpf}/${fileName}`;
     window.location.href = downloadUrl;
   };
-
-  const handleDocument = (cpf) => {
-    
-  }
-
   return (
     <div className="beneficiario">
       <ToastContainer />

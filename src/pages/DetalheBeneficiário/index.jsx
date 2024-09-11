@@ -173,18 +173,20 @@ const DetalheBeneficiario = () => {
 
       <div className = 'documentos'>
         <h1>Documentos</h1>
-        {uploadedFiles[cpf]?.map((file) => (
-          <div key={file.name} className="document-box">
-            <span className="document-name">{file.name}</span>
-            <a
-              href="#"
-              onClick={() => handleDownload(cpf, file.name)}
-              className="download-button"
-            >
-              Baixar
-            </a>
-          </div>
-        ))}
+        <p>
+          {uploadedFiles[cpf]?.map((file) => (
+            <div key={file.name} className="document-box">
+              <span className="document_name">{file.name}</span>
+              <a
+                href="#"
+                onClick={() => handleDownload(cpf, file.name)}
+                className="download-button"
+              >
+                Baixar
+              </a>
+            </div>
+          ))}
+        </p>
       </div>
       
     </div>

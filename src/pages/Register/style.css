@@ -76,9 +76,13 @@ textarea {
 
 .buttons-container {
     display: flex;
-    justify-content: center;
+   
 }
 
+.buttons-container .button{
+    justify-content: center;
+    align-items: center;
+}
 
 .button:hover {
     background-color: #45a049;

@@ -94,6 +94,7 @@
 
 .cpf-section h3 {
   margin-bottom: 20px;
+  margin-left: 455px;
   font-size: 24px;
 }
 
@@ -110,7 +111,9 @@
   border: 1px solid #ddd;
   border-radius: 5px;
   padding: 15px;
+  
   margin: 10px;
+  margin-left: 275px;
   background-color: var(--secondary);
   text-align: center;
   cursor: pointer;

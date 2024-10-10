@@ -33,3 +33,11 @@
     margin-right: 50px;
     margin-left: 50px;
 }
+
+.documentos p{
+    padding-left: 120px;
+}
+
+.document-box {
+    margin: 3px;
+}
